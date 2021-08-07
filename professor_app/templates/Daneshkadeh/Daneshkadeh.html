@@ -1,0 +1,108 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}دانشکده {{ d.name }}{% endblock title %}
+{% block styles %}
+<link rel="stylesheet" href="{% static 'css/single.css' %}" />
+{% endblock styles %}
+
+{% block content %}
+
+<div class="py-5"></div>
+<div dir="rtl" class="container">
+  <div dir="rtl" class="row">
+    <div class="col-12 mb-4 mt-4">
+      <div class="show-grouping">
+        <a href="/"><span>صفحه نخست |</span></a>
+        <a href="#"><span>همه دانشکده ها |</span></a>
+        <a href="#"><span>دانشکده {{ d.name }} </span></a>
+      </div>
+    </div>
+    <!-- sidebar -->
+    {% include '../includes/dynamic-sidebar.html' %}
+    <!-- post -->
+    <div class="col-12 col-lg-9">
+      <div class="post-body mt-2 mt-lg-0">
+        <div class="w-100 post-title">
+          <span class="material-icons post-title-icon"> assignment </span>
+          <div class="font-weight-bold text-size-16 post-title-text">
+            دانشکده {{ d.name }} کاربردی
+          </div>
+        </div>
+        <div class="w-100 post-text mt-3 rounded overflow-hidden">
+          {% if d.image %}
+          <div class="col-12 px-0 rounded image-post-body" style="background: url('{{ d.image.url }}');">
+          </div>
+          {% else %}
+          <div class="col-12 px-0 rounded image-post-body"
+            style="background: url('https://shhut.ac.ir/wp-content/uploads/2018/11/IMG_016.jpg');">
+          </div>
+          {% endif %}
+          <div class="col-12 mt-2 px-0" style="font-size: 14px !important;">
+            <p class="mb-0" style="font-size: 14px !important;">
+              مدیر گروه {{ d.name }} : {{ d.head.p_user.first_name }} {{ d.head.p_user.last_name }}
+              <br />
+              پیام مدیر گروه
+              <br />
+              {{ d.info|safe }}
+            </p>
+          </div>
+          <div class="col-12 my-3">
+            <div class="details-list">
+              <button id="btn-open-list-details-1" class="btn-open-list-details">
+                اعضای گروه {{ d.name }}
+              </button>
+              <div class="list-details">
+                <div id="list-details-1" class="w-100 mt-2 details-body">
+                  {% for p in prof %}
+                    <button class="btn-download-details-file">
+                        <a id="prof-link" href="{% url 'p_detail' p.p_user.first_name %}">{{ p.p_user.first_name }}</a>
+                    </button>
+                  {% endfor %}
+                </div>
+              </div>
+            </div>
+            <div class="details-list mt-3">
+              <button id="btn-open-list-details-2" class="btn-open-list-details">
+                فرم ها و آیین نامه های گروه {{ d.name }}
+              </button>
+              <div class="list-details">
+                <div id="list-details-2" class="w-100 mt-2 details-body">
+                  {% for dp_form in dp_forms %}
+                    <button class="btn-download-details-file">
+                        <a href="{{ dp_form.form_file.url }}">{{ dp_form.name }}</a>
+                    </button>
+                  {% endfor %}
+                </div>
+              </div>
+            </div>
+            <div class="details-list mt-3">
+              <button id="btn-open-list-details-3" class="btn-open-list-details">
+                مراکز آزمایشگاهی و کارگاهی گروه {{ d.name }}
+              </button>
+              <div class="list-details">
+                <div id="list-details-3" class="w-100 mt-2 details-body">
+                  {% for dp_lab in dp_labs %}
+                    <button class="btn-download-details-file">
+                        <a href="{{ dp_lab.lab_link }}">{{ dp_lab.name }}</a>
+                    </button>
+                  {% endfor %}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="post-date">
+          <span class="col-12">{{ date }}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock content %}
+{% block js %}
+<script src="{% static 'js/daneshkadeh.min.js' %}"></script>
+<script src="{% static 'js/sidebar-post-animation.min.js' %}"></script>
+<script src="{% static 'js/show-hide-btnGroup.min.js' %}"></script>
+{% comment %} <script src="{% static 'js/add-prof-link.min.js' %}"></script> {% endcomment %}
+{% endblock js %}

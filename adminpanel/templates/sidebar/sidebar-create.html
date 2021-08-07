@@ -1,0 +1,146 @@
+{% extends 'base-admin.html' %}
+{% load static %}
+{% block title %}Create Sidebar{% endblock title %}
+
+{% block content %}
+<div class="col-12">
+    <div class="c-card">
+        <div class="c-card-header text-size-17 font-weight-550">
+            ساخت ساید بار جدید
+        </div>
+        <div class="c-card-body">
+            <form action="" method="post">
+                {% csrf_token %}
+                <div class="row">
+                    <div class="col-12 col-md-6 mt-4">
+                        <input id="sidebar-title" type="text" class="inp text-black-50 font-weight-550"
+                            style="padding: 16px;" placeholder="نام نمایشی ساید بار را وارد کنید">
+                    </div>
+                    <div class="col-12 col-md-6 mt-4">
+                        <select name="sidebar-page" id="sidebar-page" class="inp font-weight-550 text-black-50">
+                            <option value="null">----------</option>
+                            <option value="Daneshkadeh">دانشکده ها</option>
+                            <option value="Ostad">اساتید</option>
+                            <option value="Lecture">پست ها</option>
+                            <option value="News">اخبار</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="row" id="content-include">
+                    <div class="col-12" parent-content="1">
+                        <div class="row">
+                            <div class="col-12 col-md-4 mt-4">
+                                <input id="sidebar-item-title" type="text" class="inp font-weight-550"
+                                    placeholder="نام قسمت مورد نظر را وارد کنید">
+                            </div>
+                            <div class="col-12 col-md-6 mt-4">
+                                <input id="sidebar-item-link" type="text" class="inp font-weight-550"
+                                    placeholder="لینک این قمست را وارد کنید">
+                            </div>
+                            <div class="col-12 col-md-2 mt-4">
+                                <input type="button" class="delete-btn inp font-weight-550" delete-id="1" value="حذف"
+                                    style="background: #ff2700; color: white;">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12 col-md-6 mt-4">
+                        <input type="button" value="افزودن" id="add-content">
+                    </div>
+                    <div class="col-12 col-md-6 mt-4">
+                        <input type="button" value="تایید کردن" id="okey-content">
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock content %}
+
+{% block extra_js %}
+<!-- delete content -->
+<script>
+
+    Delete_Model("delete-btn", "delete-id", "parent-content");
+
+</script>
+
+<!-- create content -->
+<script>
+    var i = 2;
+    $("#add-content").click(function () {
+        $("#content-include").append("<div class='col-12' parent-content='" + i + "'><div class='row'><div class='col-12 col-md-4 mt-4'><input id='sidebar-item-title' type='text' class='inp font-weight-550' placeholder='نام قسمت مورد نظر را وارد کنید'></div><div class='col-12 col-md-6 mt-4'><input id='sidebar-item-link' type='text' class='inp font-weight-550' placeholder='لینک این قمست را وارد کنید'></div><div class='col-12 col-md-2 mt-4'><input type='button' class='delete-btn inp font-weight-550' delete-id='" + i + "' value='حذف' style='background: #ff2700; color: white;'></div></div></div>")
+        i += 1;
+    })
+</script>
+
+<!-- handle post data -->
+<script>
+
+    const submitBtn = document.getElementById("okey-content");
+
+    function send_data() {
+        let errors = 0;
+        let sidebar_title = document.getElementById("sidebar-title").value;
+        let sidebar_page = document.getElementById("sidebar-page").value;
+        let sidebar_item_title = document.querySelectorAll("#sidebar-item-title");
+        let sidebar_item_link = document.querySelectorAll("#sidebar-item-link");
+
+        let values_title = [];
+        let values_link = [];
+
+        sidebar_item_link.forEach(ele => {
+            if (ele.value == "" || ele.value == " " || ele.value == "   ") {
+            }
+            else {
+                values_link.push(ele.value);
+            }
+        });
+
+        sidebar_item_title.forEach(ele => {
+            if (ele.value == "" || ele.value == " " || ele.value == "   ") {
+            }
+            else {
+                values_title.push(ele.value);
+            }
+        });
+
+        let data = {
+            "sidebar_item_title": values_title,
+            "sidebar_item_link": values_link,
+            "sidebar_title": sidebar_title,
+            "sidebar_page": sidebar_page
+        };
+
+        if (sidebar_page == "null") {
+            errors = 1;
+        }
+        if (sidebar_title == " " || sidebar_title == "" || sidebar_title == "   ") {
+            errors = 1;
+        }
+
+
+        if (errors == 0) {
+            fetch("{% url 'sidebar-submit' %}", {
+                method: "POST",
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRFToken': '{{ csrf_token }}'
+                },
+                credentials: 'same-origin',
+                body: JSON.stringify(data)
+            })
+                .then((response) => {
+                    window.location = "{% url 'sidebar-all' %}";
+                })
+                .catch((error) => {
+                    // maybe show an error message, I dont know
+                })
+        }
+    }
+
+    submitBtn.addEventListener('click', send_data);
+</script>
+
+{% endblock extra_js %}

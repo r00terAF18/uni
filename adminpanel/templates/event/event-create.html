@@ -1,0 +1,43 @@
+{% extends 'base-admin.html' %}
+{% load static %}
+{% block title %}Event Create{% endblock title %}
+
+{% block content %}
+
+<div class="col-12">
+    <div class="c-card">
+        <div class="c-card-header font-weight-550 text-size-17">
+            ساخت صفحه جدید
+        </div>
+        <div class="c-card-body">
+            <form action="" method="POST">
+                <input type="checkbox" name="draft" checked hidden>
+                <div class="row">
+
+                    {% csrf_token %}
+                    <div class="col-12">
+                        <span class="font-weight-550" style="color: #ff2700;"># در این قسمت نام صفحه ای
+                            که قصد ایجاد آن را دارید بنویسید</span>
+                    </div>
+                    <div class="col-12" mt-4>
+                        <input type="text" name="title" id="title" class="mt-4 inp font-weight-550 text-474747"
+                            style="padding: 16px;" placeholder="نام صفحه جدید را پیدا کنید" value="{{ e.title }}">
+                    </div>
+                    <div class="col-12 col-md-6 mt-4">
+                        {{ form.event_date }}
+                    </div>
+                    <div class="col-12 mt-4">
+                        <input type="submit" value="ایجاد صفحه" id="create-new-page">
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+{% endblock content %}
+
+{% block extra_js %}
+
+{% endblock extra_js %}

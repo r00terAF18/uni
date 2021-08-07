@@ -1,0 +1,7 @@
+.login #container input[type=text], .login #container input[type=password] {
+    background: #fff !important;
+    border-top-left-radius: 5px !important;
+    border-bottom-left-radius: 5px !important;
+    border-top-right-radius: 0 !important;
+    border-bottom-right-radius: 0 !important;
+  }

@@ -1,0 +1,92 @@
+{% extends 'base-admin.html' %}
+{% load static %}
+{% block title %}Profosor Post Creator{% endblock title %}
+
+{% block content %}
+<div class="col-12">
+    <div class="c-card">
+        <div class="c-card-header font-weight-550 text-size-17">
+            ساخت پست جدید
+        </div>
+        <div class="c-card-body">
+            <form action="" method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+                <input type="text" name="professor" value="{{ p.id }}" hidden>
+                <div class="row">
+                    <div class="col-12">
+                        <span class="font-weight-550" style="color: #ff2700;"># در این قسمت موضوع را بنویسید</span>
+                    </div>
+                    <div class="col-12" mt-4>
+                        <input type="text" name="title" id="title" class="mt-4 inp font-weight-550 text-474747"
+                            style="padding: 16px;" placeholder="موضوع پست را وارد کنید" value="{{pp.title}}">
+                    </div>
+                    <div class="col-12 mt-4">
+                        <input type="file" accept="image/*" name="image" id="image" hidden>
+                        <label for="image" style="width: 100%;">
+                            <div class="image-uploader-custom-btn">
+                                برای آپلود عکس اینجا را کلیک کنید
+                            </div>
+                        </label>
+                    </div>
+                    <div class="col-12 mt-4">
+                        <div class="image-contoroler">
+                            {% if pp.image %}
+                                <img id="preview-image" src="{{pp.image.url}}">
+                            {% else %}
+                                <img id="preview-image" src="{% static 'img-admin/1x/atlaie.png' %}">
+                            {% endif %}
+                        </div>
+                    </div>
+                    <div class="col-12 mt-4">
+                        <div class="text-editor">
+                            {{ form.media }}
+                            {{ form.content }}
+                        </div>
+                    </div>
+                    <div class="col-12 mt-4">
+                        <input type="submit" value="ایجاد صفحه" id="okey">
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<style>
+    #cke_id_content {
+        width: 100% !important;
+    }
+</style>
+
+{% endblock content %}
+
+{% block extra_js %}
+<!-- ANCHOR image preview -->
+<script>
+    let imgInp = document.getElementById("image");
+    let blah = document.getElementById("preview-image");
+    imgInp.onchange = evt => {
+        const [file] = imgInp.files
+        if (file) {
+            blah.src = URL.createObjectURL(file)
+            imgInp.value = blah.src
+        }
+    }
+
+</script>
+
+<script>
+
+    document.addEventListener("DOMContentLoaded", () => {
+        setTimeout(setText, 3000);
+        function setText() {
+            let i_f = document.querySelector('iframe').contentDocument;
+            i_f.body.innerHTML = `{{pp.content|safe}}`;
+        }
+    });
+
+</script>
+
+<script src="{% static 'js-admin/app.js' %}"></script>
+
+{% endblock extra_js %}

@@ -1,0 +1,56 @@
+<script>
+    var Image_Slider_Contoroler = document.getElementById("image-slider-range");
+    var i;
+    $("#counter-image-1").click(function () {
+        $(".image-slider").css(
+            "background",
+            "url('{{ c.img1.url }}') no-repeat"
+        );
+        $(".image-dital-span").html("{{ c.det1 }}");
+        $("#counter-image-1").addClass("counter-image-set");
+        $("#counter-image-2").removeClass("counter-image-set");
+        $("#counter-image-3").removeClass("counter-image-set");
+        $("#counter-image-4").removeClass("counter-image-set");
+        Image_Slider_Contoroler.value = 1;
+        i = 1;
+    });
+    $("#counter-image-2").click(function () {
+        $(".image-slider").css(
+            "background",
+            "url('{{ c.img2.url }}') no-repeat"
+        );
+        $(".image-dital-span").html("{{ c.det2 }}");
+        $("#counter-image-1").removeClass("counter-image-set");
+        $("#counter-image-2").addClass("counter-image-set");
+        $("#counter-image-3").removeClass("counter-image-set");
+        $("#counter-image-4").removeClass("counter-image-set");
+        Image_Slider_Contoroler.value = 2;
+        i = 2;
+    });
+    $("#counter-image-3").click(function () {
+        $(".image-slider").css(
+            "background",
+            "url('{{ c.img3.url }}') no-repeat"
+        );
+        $(".image-dital-span").html("{{ c.det3 }}");
+        $("#counter-image-1").removeClass("counter-image-set");
+        $("#counter-image-2").removeClass("counter-image-set");
+        $("#counter-image-3").addClass("counter-image-set");
+        $("#counter-image-4").removeClass("counter-image-set");
+        Image_Slider_Contoroler.value = 3;
+        i = 3;
+    });
+    $("#counter-image-4").click(function () {
+        $(".image-slider").css(
+            "background",
+            "url('{{ c.img4.url }}') no-repeat"
+        );
+        $(".image-dital-span").html("{{ c.det4 }}");
+        $("#counter-image-1").removeClass("counter-image-set");
+        $("#counter-image-2").removeClass("counter-image-set");
+        $("#counter-image-3").removeClass("counter-image-set");
+        $("#counter-image-4").addClass("counter-image-set");
+        Image_Slider_Contoroler.value = 4;
+        i = 4;
+    });
+</script>

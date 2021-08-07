@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}همه اساتید{% endblock title %}
+{% block styles %}
+<link rel="stylesheet" href="{% static 'css/all-links-notificaton.css' %}" />
+{% endblock styles %}
+
+{% block content %}
+<div class="py-5"></div>
+<div class="container">
+  <div class="text-center">
+    <span class="text-size-16">لیست اساتید</span>
+    <div class="ostad-title-underline"></div>
+  </div>
+  <div dir="rtl" class="row">
+    {% for p in Prof %}
+    <div class="col-12 col-lg-3 col-md-4 col-sm-6 my-4">
+      <a class="ostad" href="{% url 'p_detail' p.p_user.first_name %}">
+        <div class="ostad-box">
+          <div dir="rtl">
+            <div class="ostad-information-body">
+              <div class="d-flex">
+                <div class="w-100">
+                  <div class="d-flex">
+                    {% if p.image %}
+                      <div class="ostad-image" style="background: url('{{ p.image.url }}');"></div>
+                    {% else %}
+                      <div class="ostad-image"></div>
+                    {% endif %}
+                    <div class="ostad-details">
+                      <span class="ostad-name-detail">{{ p.p_user.first_name }} {{ p.p_user.last_name }}</span>
+                      <br>
+                      <span class="ostad-level-detail">{{ p.target_dep }} , {{ p.level_of_education }}</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </a>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+
+{% endblock content %}

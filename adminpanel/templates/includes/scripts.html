@@ -1,0 +1,133 @@
+<!-- page opener -->
+<script>
+    const pa = document.getElementById("page-all");
+    const hc = document.getElementById("header-create");
+    const pc = document.getElementById("page-create");
+    // --------------------------------------------
+    const professor_add = document.getElementById("professor-add");
+    const ppc = document.getElementById("professor-post-create");
+    const pu = document.getElementById("professor-upload-create");
+    const pu_all = document.getElementById("professor-upload-all");
+    // --------------------------------------------
+    const us = document.getElementById("university-system-all");
+    const usc = document.getElementById("university-system-create");
+    // --------------------------------------------
+    const ss = document.getElementById("sidebar-all");
+    const cs = document.getElementById("sidebar-create");
+    // --------------------------------------------
+    const coll_all = document.getElementById("college-all");
+    const coll_crea = document.getElementById("college-creator");
+    // --------------------------------------------
+    const edu_all = document.getElementById("education-all");
+    const edu_create = document.getElementById("education-create");
+    // --------------------------------------------
+    const news_all = document.getElementById("news-all");
+    const news_create = document.getElementById("news-create");
+    // --------------------------------------------
+    const event_all = document.getElementById("event-all");
+    const event_create = document.getElementById("event-create");
+
+    pa.onclick = () => {
+        window.location = "{% url 'page-all' %}";
+    }
+    hc.onclick = () => {
+        window.location = "{% url 'header-create' %}";
+    }
+    pc.onclick = () => {
+        window.location = "{% url 'page-create' %}";
+    }
+
+    professor_add.onclick = () => {
+        window.location = "{% url 'professor-add' %}";
+    }
+    ppc.onclick = () => {
+        window.location = "{% url 'professor-post-create' %}";
+    }
+    pu.onclick = () => {
+        window.location = "{% url 'professor-upload' %}";
+    }
+    pu_all.onclick = () => {
+        window.location = "{% url 'professor-all' %}";
+    }
+
+    us.onclick = () => {
+        window.location = "{% url 'uni-system-all' %}";
+    }
+    usc.onclick = () => {
+        window.location = "{% url 'uni-system-create' %}";
+    }
+
+    ss.onclick = () => {
+        window.location = "{% url 'sidebar-all' %}";
+    }
+    cs.onclick = () => {
+        window.location = "{% url 'sidebar-create' %}";
+    }
+
+
+    coll_all.onclick = () => {
+        window.location = "{% url 'college-all' %}";
+    }
+    coll_crea.onclick = () => {
+        window.location = "{% url 'college-add' %}";
+    }
+
+    edu_all.onclick = () => {
+        window.location = "{% url 'lecture-admin-all' %}";
+    }
+    edu_create.onclick = () => {
+        window.location = "{% url 'lecture-create' %}";
+    }
+
+    news_all.onclick = () => {
+        window.location = "{% url 'news-admin-all' %}";
+    }
+    news_create.onclick = () => {
+        window.location = "{% url 'news-create' %}";
+    }
+
+    event_all.onclick = () => {
+        window.location = "{% url 'event-admin-all' %}";
+    }
+    event_create.onclick = () => {
+        window.location = "{% url 'event-create' %}";
+    }
+</script>
+
+<!-- category list contoroler -->
+<script>
+    let category_btn = $(".category-btn");
+    let category = $(".category");
+    category_btn.click(function () {
+        $(this).parent().find("div").slideToggle();
+    })
+</script>
+
+<!-- sidebar contoroler (open & close) -->
+<script>
+    var sidebar = $("#sidebar");
+    let open_list_btn = $("#open-sidebar");
+    var content = $(".content");
+    var open_list_check = false;
+    open_list_btn.click(function () {
+        if (open_list_check == false) {
+            $("#sidebar").addClass("sidebar-opener");
+            open_list_check = true;
+        } else {
+            $("#sidebar").removeClass("sidebar-opener");
+            open_list_check = false;
+        }
+    })
+    content.dblclick(function () {
+        if (open_list_check == true) {
+            $("#sidebar").removeClass("sidebar-opener");
+            open_list_check = false;
+        }
+    })
+</script>
+
+<!-- active page -->
+<script>
+    let page_name_for_active = $("#page-name-for-active").val();
+    $("[web-open=" + page_name_for_active + "]").addClass("list-btn-active");
+</script>

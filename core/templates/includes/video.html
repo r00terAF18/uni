@@ -1,0 +1,24 @@
+{% load static %}
+<div class="col-12 col-sm-6 col-md-4 col-lg-3 my-2">
+    <button class="video-body-btn">
+        <a href="{% url 'lecture_detail' object.id %}">
+            <div class="video-body">
+                <div class="video-university-logo-body">
+                    <span class="video-time">{{ object.get_time }}</span>
+                </div>
+                <!--  image inga bayad az dakhele css tanzim beshe -> video-image-body -> background -->
+                {% if object.post_image %}
+                <div class="video-image-body" style="background: url('{{ object.post_image.url  }}') center no-repeat;">
+                    {% else %}
+                    <div class="video-image-body"
+                        style="background: url('{% static 'image/1x/atlaie.png' %}') center no-repeat;">
+                        {% endif %}
+                        <div class="video-image-title-body">
+                            <span class="video-image-title">{{ object.title }}</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </a>
+    </button>
+</div>

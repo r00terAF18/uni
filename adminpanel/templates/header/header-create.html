@@ -1,0 +1,245 @@
+{% extends 'base-admin.html' %}
+
+{% block title %}Create Header{% endblock title %}
+
+{% block content %}
+
+<div class="col-12">
+    <div class="c-card">
+        <div class="c-card-header font-weight-550 text-size-17">
+            ساخت بخش هدر
+        </div>
+        <div class="c-card-body">
+            <div class="row">
+                <div class="col-12 font-weight-500" style="color: #ff2700;">
+                    <span>#</span> در این قسمت مشخص کنید که این قسمت از هدر از چه نوعی می باشد
+                </div>
+                <div class="col-12 col-md-6 mt-4">
+                    <select name="type-header-par" class="inp font-weight-550 text-474747" id="type-header-part">
+                        <option value="group">دسته بندی</option>
+                        <option value="link">یک لینک</option>
+                    </select>
+                </div>
+                <div class="col-12 col-md-6 mt-4">
+                    <input type="text" class="inp font-weight-550 text-474747" id="group-title"
+                        placeholder="نام دسته بندی جدید را وارد کنید">
+                </div>
+                <div class="col-12 mt-4" show-type="group">
+                    <div class="c-card-header font-weight-550 text-size-17 text-black-50">
+                        لیست صفحه هات این دسته
+                        <small class="text-size-12" style="color: #ff2700;"># در این قسمت صفحه هات این
+                            دسته را ایجاد کنید</small>
+                    </div>
+                    <ul id="grouping__link_list" class="mt-4">
+                        <li class="row" parent-content="1">
+                            <div class="col-12 col-sm-10">
+                                <select class="inp font-weight-550 text-black-50" name="main-list-page-viwe"
+                                    id="main-list-page-viwe">
+                                    <option value="page-name" id="content-1">
+                                        نام صفحه (توضیحات صفحه)
+                                    </option>
+                                    {% for pc in page_content %}
+                                    <option value="{{pc.id}}" id="content-{{pc.id}}">
+                                        {{pc.title}}
+                                    </option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+                            <div class="col-12 col-sm-2 mt-4 mt-sm-0">
+                                <input type="button" class="delete-btn" id="delete-1" remove="1" value="حذف">
+                            </div>
+                        </li>
+                    </ul>
+                    <div class="w-100">
+                        <div class="row">
+                            <div class="col-12 col-md-6 mt-4">
+                                <input type="button" value="افزودن صفحه" class="add-group-page" id="add-group-page">
+                            </div>
+                            <div class="col-12 col-md-6 mt-4">
+                                <input type="button" value="تایید کردن" id="okey-creator">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 mt-4" show-type="link">
+                    <div class="row">
+                        <div class="col-12">
+                            <select class="inp font-weight-550 text-black-50" name="main-list-page-viwe"
+                                id="main-list-page-viwe-single">
+                                <option value="page-name" id="content-1">
+                                    نام صفحه (توضیحات صفحه)
+                                </option>
+                                {% for pc in page_content %}
+                                <option value="{{pc.id}}" id="content-{{pc.id}}">
+                                    {{pc.title}}
+                                </option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                        <div class="col-12 mt-4">
+                            <input type="button" value="تایید کردن" id="okey-link-creator">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock content %}
+{% block extra_js %}
+<!-- checking link or group -->
+<script>
+    let type_header_part = $("#type-header-part");
+    if (type_header_part.val() == "group") {
+        $("#group-title").attr("hidden", false);
+        $("[show-type=group]").attr("hidden", false);
+        $("[show-type=link]").attr("hidden", true);
+    } else if (type_header_part.val() == "link") {
+        $("#group-title").attr("hidden", true);
+        $("[show-type=group]").attr("hidden", true);
+        $("[show-type=link]").attr("hidden", false);
+    }
+    document.addEventListener("change", () => {
+        if (type_header_part.val() == "group") {
+            $("#group-title").attr("hidden", false);
+            $("[show-type=group]").attr("hidden", false);
+            $("[show-type=link]").attr("hidden", true);
+        } else if (type_header_part.val() == "link") {
+            $("#group-title").attr("hidden", true);
+            $("[show-type=group]").attr("hidden", true);
+            $("[show-type=link]").attr("hidden", false);
+        }
+    })
+</script>
+
+<!-- delete link  in group -->
+<script>
+    let delete_num;
+
+    $(".delete-btn").click(function () {
+        console.log("step 1 : clicked");
+        delete_num = $(this).attr("remove");
+        console.log("step 2 : " + delete_num);
+        $("[parent-content=" + delete_num + "]").remove();
+        console.log("step 3 : remove --> [parent-content]=" + delete_num + "");
+    })
+    document.addEventListener("click", () => {
+        $(".delete-btn").click(function () {
+            console.log("step 1 : clicked");
+            delete_num = $(this).attr("remove");
+            console.log("step 2 : " + delete_num);
+            $("[parent-content=" + delete_num + "]").remove();
+            console.log("step 3 : remove --> [parent-content]=" + delete_num + "");
+        })
+    })
+</script>
+
+<!-- create link in group -->
+<script>
+
+    let ids = [];
+    let names = [];
+
+    {% for n in names %}
+    names.push("{{n}}");
+    {% endfor %}
+
+    {% for i in ids %}
+    ids.push({{ i }});
+    {% endfor %}
+
+    var i = 2;
+    $("#add-group-page").click(function () {
+        $("#grouping__link_list").append(`<li class='row mt-4' parent-content='${i}'><div class='col-12 col-sm-10'><select class='inp font-weight-550 text-black-50' name='main-list-page-viwe' id='main-list-page-viwe'><option value='page-name' id='content-${i}'>نام صفحه (توضیحات صفحه)</option></select></div><div class='col-12 col-sm-2 mt-4 mt-sm-0'><input type='button' class='delete-btn' id='delete-${i}' remove='${i}' value='حذف'></div></li>`)
+        i += 1;
+        let lists = document.querySelectorAll("#main-list-page-viwe");
+
+        // first remove all the options
+        lists.forEach(ele => (
+            ele.querySelectorAll('option').forEach(o => {
+                o.remove()
+            })
+        ));
+
+        lists.forEach(ele => {
+            let o = document.createElement('option')
+            o.value = "page-name"
+            o.id = "content-1"
+            o.innerText = "نام صفحه (توضیحات صفحه)"
+            // add back the default option
+            ele.appendChild(o)
+            for (let i = 0; i < ids.length; i++) {
+                let oc = document.createElement('option')
+                oc.value = ids[i]
+                oc.id = ids[i]
+                oc.innerText = names[i]
+                // create the options from DB
+                ele.appendChild(oc)
+            }
+        })
+    })
+
+</script>
+
+<script>
+
+    const button_create_link = document.getElementById("okey-link-creator");
+    const creator_link = document.getElementById("okey-creator");
+
+    function send_data_single() {
+        const id_of_page = document.getElementById("main-list-page-viwe-single").value;
+
+        data = {
+            "id": id_of_page
+        }
+
+        fetch("{% url 'header-single-submit' %}", {
+            method: "POST",
+            headers: {
+                'Content-Type': 'application/json',
+                'X-CSRFToken': '{{ csrf_token }}'
+            },
+            credentials: 'same-origin',
+            body: JSON.stringify(data)
+        })
+            .then((response) => {
+                window.location = "{% url 'page-all' %}";
+            })
+    }
+
+    function send_data_multi() {
+        let lists = document.querySelectorAll("#main-list-page-viwe");
+        let ids = [];
+        let sub_menu_name = document.getElementById("group-title").value;
+
+        lists.forEach(ele => {
+            ids.push(ele.value)
+        });
+
+        let data = {
+            "ids": ids,
+            "title": sub_menu_name
+        }
+
+        fetch("{% url 'header-multi-submit' %}", {
+            method: "POST",
+            headers: {
+                'Content-Type': 'application/json',
+                'X-CSRFToken': '{{ csrf_token }}'
+            },
+            credentials: 'same-origin',
+            body: JSON.stringify(data)
+        })
+            .then((response) => {
+                window.location = "{% url 'page-all' %}";
+            })
+    }
+
+    button_create_link.addEventListener('click', send_data_single);
+    creator_link.addEventListener('click', send_data_multi);
+
+</script>
+
+
+{% endblock extra_js %}

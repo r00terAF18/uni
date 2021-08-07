@@ -1,0 +1,120 @@
+{% extends 'base-admin.html' %}
+{% load static %}
+{% block title %}Professor Create{% endblock title %}
+
+{% block content %}
+
+<div class="col-12">
+    <div class="c-card">
+        <div class="c-card-header">
+            صفحه مخصوص استاد
+        </div>
+        <div class="c-card-body">
+            <span class="c_red"># پس از کلیک بر روی تایید اطلاعات و ارسال به سرور استاد مربوطه باید اطلاعات خود را تایید کند تا در لیست اساتید نمایش داده شود
+             .</span>
+            <form action="{% url 'professor-create-submit' %}" method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+                <div class="row">
+                    <div class="col-12 col-md-6 mt-4">
+                        <input name="ostad-first-name" type="text" class="inp" placeholder="نام و استاد را وارد کنید"
+                            id="ostad-first-name">
+                    </div>
+                    <div class="col-12 col-md-6 mt-4">
+                        <input name="ostad-family-name" type="text" class="inp"
+                            placeholder="نام خانوادگی استاد را وارد کنید" id="ostad-family-name">
+                    </div>
+                    <div class="col-12 col-md-6 mt-4">
+                        <input name="ostad-level" type="text" class="inp" placeholder="مرتبه علمی استاد را وارد کنید"
+                            id="ostad-level">
+                    </div>
+                    <div class="col-12 col-md-6 mt-4">
+                        <input name="ostad-email" type="text" class="inp" placeholder="ایمیل استاد را وارد کنید"
+                            id="ostad-email">
+                    </div>
+                    <div class="col-12 col-md-6 mt-4">
+                        <input name="ostad-local-number" type="text" class="inp"
+                            placeholder="شماره داخلی استاد را وارد کنید" id="ostad-local-number">
+                    </div>
+
+                    <div class="col-12 col-md-6 mt-4">
+                        <input type="password" name="password1" class="inp" placeholder="Password" id="ostad-password1">
+                    </div>
+                    <div class="col-12 col-md-6 mt-4">
+                        <input type="password" name="password2" class="inp" placeholder="Repeat Password"
+                            id="ostad-password2">
+                    </div>
+
+                    <div class="col-12 col-md-6 mt-4">
+                        <select class="inp" name="college" id="college">
+                            <option value="null">--------------</option>
+                            {% for dp in list_dp %}
+                                <option value="{{ dp.name }}">{{ dp.name }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    <div class="col-12 mt-4">
+                        <input type="submit" value="تایید اطلاعات و ارسال به سرور" id="submit">
+                    </div>
+                </div>
+            </form>
+
+        </div>
+    </div>
+</div>
+
+
+<style>
+    #cke_id_p_projects {
+        width: 100% !important;
+    }
+
+    #cke_id_p_prizes {
+        width: 100% !important;
+    }
+
+    #cke_id_p_education_project {
+        width: 100% !important;
+    }
+
+    #cke_id_p_projects_complete {
+        width: 100% !important;
+    }
+
+    #cke_id_p_projects_pending {
+        width: 100% !important;
+    }
+
+    #cke_id_p_translation {
+        width: 100% !important;
+    }
+
+    #cke_id_p_convention {
+        width: 100% !important;
+    }
+
+    #cke_id_p_convention_isi {
+        width: 100% !important;
+    }
+
+    #cke_id_p_papers {
+        width: 100% !important;
+    }
+
+    #cke_id_p_papers_isi {
+        width: 100% !important;
+    }
+
+    #cke_id_p_liking {
+        width: 100% !important;
+    }
+
+    #cke_id_p_education {
+        width: 100% !important;
+    }
+</style>
+
+{% endblock content %}
+
+{% block extra_js %}
+<script src="{% static 'js-admin/multi.js' %}"></script>
+{% endblock extra_js %}

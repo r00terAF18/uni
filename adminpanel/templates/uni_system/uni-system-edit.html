@@ -1,0 +1,70 @@
+{% extends 'base-admin.html' %}
+{% block title %}Edit Uni System{% endblock title %}
+{% block content %}
+
+<div class="col-12">
+    <div class="c-card">
+        <div class="c-card-header font-weight-550 text-size-17">
+            تغییر سیستم
+        </div>
+        <div class="c-card-body">
+            <i class="font-weight-550 font-style-normal" style="color: #ff2700;"># اطلاعات مربوط به
+                سیستم را وارد کنید</i>
+            <form action="{% url 'uni-system-edit' uni.pk %}" method="POST" enctype="multipart/form-data">
+                {% for field in form %}
+                    {{ field.errors }}
+                {% endfor %}
+                {{ form.non_field_errors }}
+                {% csrf_token %}
+                <div class="row">
+                    <div class="col-12 col-md-6 mt-4">
+                        {{ form.uni_system_title }}
+                    </div>
+                    <div class="col-12 col-md-6 mt-4">
+                        {{ form.uni_system_link }}
+                    </div>
+                    <div class="col-12 mt-4">
+                        <input type="file" accept="image/*" name="uni_system_image" id="icon-uploader" hidden>
+                        <span id="image-name" class="font-weight-500 text-black-50">image link</span>
+                        <label for="icon-uploader" style="width: 100%;">
+                            <div class="image-uploader-custom-btn mt-4">
+                                برای آپلود عکس اینجا را کلیک کنید
+                            </div>
+                        </label>
+                    </div>
+                    <div class="col-12 mt-4">
+                        <input type="submit" value="تایید کردن" id="okey-systems">
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+{% endblock content %}
+
+{% block extra_js %}
+<!-- image file name -->
+<script>
+    var filename = $("#icon-uploader").val();
+    $("#image-name").html(filename);
+    document.addEventListener("change", () => {
+        var filename = $("#icon-uploader").val();
+        $("#image-name").html(filename);
+    })
+</script>
+
+<!-- get image address -->
+<script>
+    let icon_uploader = document.getElementById("icon-uploader");
+    let link;
+    icon_uploader.onchange = evt => {
+        const [file] = icon_uploader.files
+        if (file) {
+            link = URL.createObjectURL(file)
+        }
+        icon_uploader.value = link;
+    }
+</script>
+{% endblock extra_js %}

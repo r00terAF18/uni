@@ -1,0 +1,79 @@
+{% extends 'base-admin.html' %}
+{% load static %}
+{% block title %}Header Page Creator{% endblock title %}
+
+{% block content %}
+
+<div class="col-12">
+    <div class="c-card">
+        <div class="c-card-header font-weight-550 text-size-17">
+            ساخت صفحه جدید
+        </div>
+        <div class="c-card-body">
+            <form action="{% url 'page-submit' %}" method="POST" enctype="multipart/form-data">
+                <div class="row">
+
+                    {% csrf_token %}
+                    <div class="col-12">
+                        <span class="font-weight-550" style="color: #ff2700;"># در این قسمت نام صفحه ای
+                            که قصد ایجاد آن را دارید بنویسید</span>
+                    </div>
+                    <div class="col-12" mt-4>
+                        <input type="text" name="page-name" id="page-name" class="mt-4 inp font-weight-550 text-474747"
+                            style="padding: 16px;" placeholder="نام صفحه جدید را پیدا کنید">
+                    </div>
+                    <div class="col-12 mt-4">
+                        <input type="file" accept="image/*" name="image-uploader" id="image-uploader" hidden>
+                        <label for="image-uploader" style="width: 100%;">
+                            <div class="image-uploader-custom-btn">
+                                برای آپلود عکس اینجا را کلیک کنید
+                            </div>
+                        </label>
+                    </div>
+                    <div class="col-12 mt-4">
+                        <div class="image-contoroler">
+                            <img id="preview-image" src="{% static 'img-admin/1x/atlaie.png' %}">
+                        </div>
+                    </div>
+                    <div class="col-12 mt-4">
+                        <div class="text-editor">
+                            {{ form.media }}
+                            {{ form.content }}
+                        </div>
+                    </div>
+                    <div class="col-12 mt-4">
+                        <input type="submit" value="ایجاد صفحه" id="create-new-page">
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+<style>
+    #cke_id_content {
+        width: 100% !important;
+    }
+</style>
+
+{% endblock content %}
+
+{% block extra_js %}
+<!-- ANCHOR image preview -->
+<script>
+    let imgInp = document.getElementById("image-uploader");
+    let blah = document.getElementById("preview-image");
+    imgInp.onchange = evt => {
+        const [file] = imgInp.files
+        if (file) {
+            blah.src = URL.createObjectURL(file)
+            imgInp.value = blah.src
+        }
+    }
+
+</script>
+
+<script src="{% static 'js-admin/app.js' %}"></script>
+
+{% endblock extra_js %}

@@ -1,0 +1,41 @@
+<div class="col-12 col-lg-3">
+    <div class="col-12 px-0 slidebar-body-parent">
+        <div class="sidebar-body">
+            <button class="btn-sidebar-admin-opener" id="btn-sidebar-admin-opener">
+                اتاق کنترل محتوا
+            </button>
+            <ul class="sidebar-list sidebar-list-opener">
+                <li class="sidebar-li">
+                    <button class="sidebar-btn"><a href="{% url 'admin_panel:admin_daneshjo_index' %}">صفحه
+                            اصلی</a></button>
+                </li>
+                <li class="sidebar-li">
+                    <button class="sidebar-btn"><a href="{% url 'admin_panel:admin_daneshjo_list_posts' %}">همه پست
+                            ها</a></button>
+                </li>
+                <li class="sidebar-li">
+                    <button class="sidebar-btn"><a href="{% url 'admin_panel:admin_daneshjo_list_self_post' %}">ایجاد پست
+                            و
+                            پست
+                            های من</a></button>
+                </li>
+            </ul>
+        </div>
+        <div class="my-3">
+            <div class="sidebar-body">
+                <ul class="sidebar-list">
+                    <li class="sidebar-li">
+                        <button class="sidebar-btn alert-danger">
+                            <a href="{% url 'admin_panel:student_logout' %}">خروج از سامانه</a>
+                        </button>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    $("#btn-sidebar-admin-opener").click(function () {
+        $(this).parent().find("ul").slideToggle();
+    })
+</script>

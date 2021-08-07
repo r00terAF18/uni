@@ -1,0 +1,93 @@
+<div class="category-list">
+    <a href="{% url 'index-admin' %}">
+        <button class="category-btn">صفحه اصلی</button>
+    </a>
+</div>
+<div class="category-list">
+    <button class="category-btn">اساتید</button>
+    <div class="category">
+        <button class="list-btn" id="professor-add"
+            data-req-type="active-link" data-active-link="/Admin-Panel/Professor/add/" data-active-class="list-btn-active">ساخت استاد</button>
+        <button class="list-btn" id="professor-post-create"
+        data-req-type="active-link" data-active-link="/Admin-Panel/Professor/post/create/" data-active-class="list-btn-active">پست</button>
+        <button class="list-btn" id="professor-upload-create"
+        data-req-type="active-link" data-active-link="/Admin-Panel/Professor/upload/" data-active-class="list-btn-active">اطلاعات مربوط به استاد</button>
+        <button class="list-btn" id="professor-upload-all"
+        data-req-type="active-link" data-active-link="/Admin-Panel/Professor/all/" data-active-class="list-btn-active">همه پست ها</button>
+    </div>
+</div> 
+<div class="category-list">
+    <button class="category-btn">سیستم هدر</button>
+    <div class="category">
+        <button class="list-btn" id="page-all" 
+        data-req-type="active-link" data-active-link="/Admin-Panel/Page/all/" data-active-class="list-btn-active">نمایش و ویرایش</button>
+        <button class="list-btn" id="header-create"
+        data-req-type="active-link" data-active-link="/Admin-Panel/Header/create/" data-active-class="list-btn-active">ساخت صفحه</button>
+        <button class="list-btn" id="page-create"
+        data-req-type="active-link" data-active-link="/Admin-Panel/Page/create/" data-active-class="list-btn-active">ایجاد کامپوننت</button>
+    </div>
+</div> 
+<div class="category-list">
+    <button class="category-btn">سیستم های دانشگاه</button>
+    <div class="category">
+        <button class="list-btn" id="university-system-all"
+        data-req-type="active-link" data-active-link="/Admin-Panel/University-System/all/" data-active-class="list-btn-active">همه سیستم های دانشگاه</button>
+        <button class="list-btn" id="university-system-create"
+        data-req-type="active-link" data-active-link="/Admin-Panel/University-System/create/" data-active-class="list-btn-active">ساخت یک سیستم جدید</button>
+    </div>
+</div>
+<div class="category-list">
+    <button class="category-btn">سیستم ساید بار</button>
+    <div class="category">
+        <button class="list-btn" id="sidebar-all"
+        data-req-type="active-link" data-active-link="/Admin-Panel/Sidebar/all/" data-active-class="list-btn-active">نمایش ساید بار ها</button>
+        <button class="list-btn" id="sidebar-create"
+        data-req-type="active-link" data-active-link="/Admin-Panel/Sidebar/create/" data-active-class="list-btn-active">ساخت ساید بار</button>
+    </div>
+</div> 
+<div class="category-list">
+    <button class="category-btn">دانشکده ها</button>
+    <div class="category">
+        <button class="list-btn" id="college-all" 
+        data-req-type="active-link" data-active-link="/Admin-Panel/College/all/" data-active-class="list-btn-active">نمایش و ویرایش</button>
+        <button class="list-btn" id="college-creator"
+        data-req-type="active-link" data-active-link="/Admin-Panel/College/create/" data-active-class="list-btn-active">ساخت دانشکده</button>
+    </div>
+</div>
+<div class="category-list">
+    <button class="category-btn">آموزش ها</button>
+    <div class="category">
+        <button class="list-btn" id="education-all" 
+        data-req-type="active-link" data-active-link="/Lecture/admin/all/" data-active-class="list-btn-active">نمایش و ویرایش</button>
+        <button class="list-btn" id="education-create"
+        data-req-type="active-link" data-active-link="/Lecture/create/" data-active-class="list-btn-active">ساخت آموزش</button>
+    </div>
+</div>
+<div class="category-list">
+    <button class="category-btn">اخبار ها</button>
+    <div class="category">
+        <button class="list-btn" id="news-all" 
+        data-req-type="active-link" data-active-link="/News/admin/all/" data-active-class="list-btn-active">نمایش و ویرایش</button>
+        <button class="list-btn" id="news-create"
+        data-req-type="active-link" data-active-link="/News/create/" data-active-class="list-btn-active">ساخت اخبار</button>
+    </div>
+</div>
+<div class="category-list">
+    <button class="category-btn">رویداد ها</button>
+    <div class="category">
+        <button class="list-btn" id="event-all" 
+        data-req-type="active-link" data-active-link="/Event/admin/all/" data-active-class="list-btn-active">نمایش و ویرایش</button>
+        <button class="list-btn" id="event-create"
+        data-req-type="active-link" data-active-link="/Event/create/" data-active-class="list-btn-active">ساخت رویداد</button>
+    </div>
+</div>
+<div class="category-list">
+    <a href="{% url 'logout' %}">
+        <button class="category-btn">خروج از اکانت</button>
+    </a>
+</div>
+<div class="category-list">
+    <a href="{% url 'home_view' %}">
+        <button class="category-btn">بازگشت به دانشگاه</button>
+    </a>
+</div>

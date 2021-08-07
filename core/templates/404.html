@@ -1,0 +1,18 @@
+{% load static %}
+{% block title %}No Access is Granted{% endblock title %}
+{% block content %}
+<div style="top: 50%;
+    right: 50%;
+    transform: translate(50% , -50%);
+    position: absolute;
+    display: inline-block;">
+    <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+    <lottie-player src="https://assets4.lottiefiles.com/packages/lf20_g3epl9yu.json" background="transparent" speed="1"
+        style="width: 650px; height: 650px;" autoplay></lottie-player>
+</div>
+<style>
+    html {
+        height: 100% !important;
+    }
+</style>
+{% endblock content %}

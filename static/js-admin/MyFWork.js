@@ -1,0 +1,1 @@
+document.querySelectorAll('[data-req-type="active-link"]').forEach(function(el){var _a;var activeLink=(_a=el.getAttribute("data-active-link"))!==null&&_a!==void 0?_a:el.getAttribute("href");var activeClass=el.getAttribute('data-active-class');if(location.pathname===activeLink){el.classList.add(activeClass);}});

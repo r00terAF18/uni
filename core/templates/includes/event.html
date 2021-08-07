@@ -1,0 +1,13 @@
+{% load static %}
+<div class="col-12 col-md-6 col-lg-4 my-2">
+	<div dir="rtl" class="event-body">
+		<div class="event-date">
+			<span class="event-date-number">{{ nn.get_event_date_day }}</span>
+			<span class="event-date-moon">{{ nn.get_event_date_month }}</span>
+		</div>
+		<div class="event-title">
+			<span>{{ nn.title }}</span>
+			<span class="event-time-ago">{{ nn.get_time_left }} روز</span>
+		</div>
+	</div>
+</div>

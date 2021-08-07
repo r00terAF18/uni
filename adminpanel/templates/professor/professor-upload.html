@@ -1,0 +1,190 @@
+{% extends 'base-admin.html' %}
+{% load static %}
+{% block title %}Professor Create Upload{% endblock title %}
+
+{% block content %}
+<div class="col-12">
+    <div class="c-card">
+        <div class="c-card-header">
+            صفحه مخصوص استاد
+        </div>
+        <div class="c-card-body">
+            <span class="c_red"># پس از کلیک بر روی تایید اطلاعات و ارسال به سرور اسم شما در لیست اساتید
+                نمایش داده خواهد شد ( در صورت خالی بودن هر کدام از فیلد ها آن فیلد نمایش داده نمی شود
+                )</span>
+            <form action="" method="POST">
+                {% csrf_token %}
+                <input type="text" name="p_professor" value="{{ p.id }}" hidden>
+                <div class="row">
+                    <div class="col-12 mt-4">
+                        <span class="c_red">
+                            # توضیحات مربوط به خودتان را وارد کنید
+                        </span>
+                        <div class="text-editor mt-4">
+                            {{ form.media }}
+                            {{ form.p_about }}
+                        </div>
+                    </div>
+                    <div class="col-12 mt-4">
+                        <span class="c_red">
+                            # سوابق تحصیلی خود را وارد کنید
+                        </span>
+                        <div class="text-editor mt-4">
+                            {{ form.p_education }}
+                        </div>
+                    </div>
+                    <div class="col-12 mt-4">
+                        <span class="c_red">
+                            # زمینه های تحقیقاتی مورد علاقه
+                        </span>
+                        <div class="text-editor mt-4">
+                            {{ form.p_liking }}
+                        </div>
+                    </div>
+                    <div class="col-12 mt-4">
+                        <span class="c_red">
+                            # مقالات چاپ شده در نشریات معتبر علمی- پژوهشی بین المللی و ISI
+                        </span>
+                        <div class="text-editor mt-4">
+
+                            {{ form.p_papers_isi }}
+                        </div>
+                    </div>
+                    <div class="col-12 mt-4">
+                        <span class="c_red">
+                            # مقالات چاپ شده در نشریات معتبر داخلی
+                        </span>
+                        <div class="text-editor mt-4">
+                            {{ form.p_papers }}
+                        </div>
+                    </div>
+                    <div class="col-12 mt-4">
+                        <span class="c_red">
+                            # همایش های بین المللی
+                        </span>
+                        <div class="text-editor mt-4">
+                            {{ form.p_convention_isi }}
+                        </div>
+                    </div>
+                    <div class="col-12 mt-4">
+                        <span class="c_red">
+                            # همایش های ملی و منطقه ای
+                        </span>
+                        <div class="text-editor mt-4">
+                            {{ form.p_convention }}
+                        </div>
+                    </div>
+                    <div class="col-12 mt-4">
+                        <span class="c_red">
+                            # تالیف و ترجمه کتاب
+                        </span>
+                        <div class="text-editor mt-4">
+                            {{ form.p_translation }}
+                        </div>
+                    </div>
+                    <div class="col-12 mt-4">
+                        <span class="c_red">
+                            # طرح های تحقیقاتی در دست اجرا
+                        </span>
+                        <div class="text-editor mt-4">
+                            {{ form.p_projects_pending }}
+                        </div>
+                    </div>
+                    <div class="col-12 mt-4">
+                        <span class="c_red">
+                            # طرح های تحقیقاتی خاتمه یافته
+                        </span>
+                        <div class="text-editor mt-4">
+                            {{ form.p_projects_complete }}
+                        </div>
+                    </div>
+                    <div class="col-12 mt-4">
+                        <span class="c_red">
+                            # راهنمایی و مشاوره پروژه های کارشناسی، پایان نامه های کارشناسی ارشد و رساله های دکتری
+                        </span>
+                        <div class="text-editor mt-4">
+                            {{ form.p_education_project }}
+                        </div>
+                    </div>
+                    <div class="col-12 mt-4">
+                        <span class="c_red">
+                            # فعالیتهای اجرایی
+                        </span>
+                        <div class="text-editor mt-4">
+                            {{ form.p_projects }}
+                        </div>
+                    </div>
+                    <div class="col-12 mt-4">
+                        <span class="c_red">
+                            # جوایز و افتخارات
+                        </span>
+                        <div class="text-editor mt-4">
+                            {{ form.p_prizes }}
+                        </div>
+                    </div>
+                    <div class="col-12 mt-4">
+                        <input type="submit" value="تایید اطلاعات و ارسال به سرور" id="submit">
+                    </div>
+                </div>
+            </form>
+
+        </div>
+    </div>
+</div>
+
+
+<style>
+    #cke_id_p_projects {
+        width: 100% !important;
+    }
+
+    #cke_id_p_prizes {
+        width: 100% !important;
+    }
+
+    #cke_id_p_education_project {
+        width: 100% !important;
+    }
+
+    #cke_id_p_projects_complete {
+        width: 100% !important;
+    }
+
+    #cke_id_p_projects_pending {
+        width: 100% !important;
+    }
+
+    #cke_id_p_translation {
+        width: 100% !important;
+    }
+
+    #cke_id_p_convention {
+        width: 100% !important;
+    }
+
+    #cke_id_p_convention_isi {
+        width: 100% !important;
+    }
+
+    #cke_id_p_papers {
+        width: 100% !important;
+    }
+
+    #cke_id_p_papers_isi {
+        width: 100% !important;
+    }
+
+    #cke_id_p_liking {
+        width: 100% !important;
+    }
+
+    #cke_id_p_education {
+        width: 100% !important;
+    }
+</style>
+
+{% endblock content %}
+
+{% block extra_js %}
+<script src="{% static 'js-admin/multi.js' %}"></script>
+{% endblock extra_js %}

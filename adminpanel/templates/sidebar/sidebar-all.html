@@ -1,0 +1,49 @@
+{% extends 'base-admin.html' %}
+{% block title %}Show Sidebars{% endblock title %}
+
+{% block content %}
+<div class="col-12">
+    <div class="row">
+        <div class="col-12">
+            <div class="c-card">
+                <div class="c-card-header font-weight-550 text-size-17">
+                    لیست ساید بار ها
+                </div>
+                <div class="c-card-body px-0">
+                    <div class="table-responsive">
+                        <table class="table table-borderless text-center" style="margin-bottom: 0 !important;">
+                            <thead class="font-weight-550 text-black-50 text-size-16">
+                                <tr>
+                                    <th class="text-size-15">#</th>
+                                    <th class="text-size-15">نام ساید بار</th>
+                                    <th class="text-size-15" style="width: 315px !important;">عملگرا</th>
+                                </tr>
+                            </thead>
+                            <tbody id="filtering" class="font-weight-550 text-474747">
+                                {% for s in sidebars %}
+                                <tr>
+                                    <td>{{s.pk}}</td>
+                                    <td>{{s.sidebar_title}}</td>
+                                    <td>
+                                        <a href="{% url 'sidebar-delete' s.pk %}" class="text-decoration-none"
+                                            style="color: #ff0037; margin-left: 15px;">
+                                            حذف کردن
+                                        </a>
+                                        <a href="{% url 'sidebar-edit' s.pk %}" class="text-decoration-none"
+                                            style="color: #00d13f !important;">
+                                            ویرایش کردن
+                                        </a>
+                                    </td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{% endblock content %}

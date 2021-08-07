@@ -1,0 +1,9 @@
+header {
+    direction: rtl;
+}
+
+/* ....................tag.................. */
+
+ul.ul-main-list {
+    padding-right: 225px;
+}

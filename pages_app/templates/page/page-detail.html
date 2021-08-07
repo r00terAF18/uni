@@ -1,0 +1,98 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}{{ page.title }}{% endblock title %}
+{% block styles %}
+<link rel="stylesheet" href="{% static 'css/single.css' %}" />
+{% endblock styles %}
+
+{% block content %}
+
+<div class="py-5"></div>
+<div dir="rtl" class="container">
+  <div dir="rtl" class="row">
+    <div class="col-12 mb-4 mt-3">
+      <div class="show-grouping">
+        <a href="#"><span> |</span></a>
+        <a href="#"><span> |</span></a>
+        <a href="#"><span>{{ page.title }} </span></a>
+      </div>
+    </div>
+    <!-- sidebar -->
+    <div class="col-12 col-lg-3">
+      <div class="col-12 px-0 slidebar-body-parent">
+        <div class="sidebar-body">
+          <ul class="sidebar-list">
+            <li class="sidebar-li">
+              <button class="sidebar-btn"><a href="/">صفحه اصلی</a></button>
+            </li>
+            {% for dp in list_dp %}
+                <li class="sidebar-li mt-2">
+                    <button class="sidebar-btn">
+                        <a href="{% url 'dp_view' dp.name %}">دانشکده {{ dp.name }}</a>
+                    </button>
+                </li>
+            {% endfor %}
+          </ul>
+        </div>
+        <div class="my-3">
+          <div class="sidebar-body">
+            <ul class="sidebar-list">
+              <li class="sidebar-li">
+                <button class="sidebar-btn">
+                  <a href="#">سامانه ناد</a>
+                </button>
+              </li>
+              <li class="sidebar-li mt-2">
+                <button class="sidebar-btn">
+                  <a href="{% url 'notif-all' %}">اطلاعیه ها</a>
+                </button>
+              </li>
+              <li class="sidebar-li mt-2">
+                <button class="sidebar-btn"><a href="{% url 'news-all' %}">اخبار</a></button>
+              </li>
+              <li class="sidebar-li mt-2">
+                <button class="sidebar-btn"><a href="{% url 'event-all' %}">رویداد ها</a></button>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- post -->
+    <div class="col-12 col-lg-9">
+      <div class="post-body mt-2 mt-lg-0">
+        <div class="w-100 post-title">
+          <span class="material-icons post-title-icon"> assignment </span>
+          <div class="font-weight-bold text-size-16 post-title-text">
+            {{ page.title }}
+          </div>
+        </div>
+        <div class="w-100 post-text mt-3 rounded overflow-hidden">
+
+          {% if page.image %}
+          <div class="col-12 px-0 rounded image-post-body" style="background: url('{{ page.image.url }}')">
+          </div>
+          {% else %}
+          <div class="col-12 px-0 rounded image-post-body"
+            style="background: url('{% static 'image/1x/atlaie.png' %}')">
+          </div>
+          {% endif %}
+
+
+          <div class="col-12 p-0 mt-2" style="font-size: 14px !important;">
+            {{ page.content|safe }}
+          </div>
+        </div>
+        <div class="post-date">
+          <span class="col-12 px-0"></span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock content %}
+{% block js %}
+<script src="{% static 'js/sidebar-post-animation.min.js' %}"></script>
+<script src="{% static 'js/show-hide-btnGroup.min.js' %}"></script>
+{% endblock js %}

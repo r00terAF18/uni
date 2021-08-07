@@ -1,0 +1,383 @@
+/* VARIABLE DEFINITIONS */
+:root {
+  --primary: #79aec8;
+  --secondary: #417690;
+  --accent: #f5dd5d;
+  --primary-fg: #fff;
+
+  --body-fg: #333;
+  --body-bg: #fff;
+  --body-quiet-color: #666;
+  --body-loud-color: #000;
+
+  --header-color: #ffc;
+  --header-branding-color: var(--accent);
+  --header-bg: var(--secondary);
+  --header-link-color: var(--primary-fg);
+
+  --breadcrumbs-fg: #c4dce8;
+  --breadcrumbs-link-fg: var(--body-bg);
+  --breadcrumbs-bg: var(--primary);
+
+  --link-fg: #447e9b;
+  --link-hover-color: #036;
+  --link-selected-fg: #5b80b2;
+
+  --hairline-color: #e8e8e8;
+  --border-color: #ccc;
+
+  --error-fg: #ba2121;
+
+  --message-success-bg: #dfd;
+  --message-warning-bg: #ffc;
+  --message-error-bg: #ffefef;
+
+  --darkened-bg: #f8f8f8; /* A bit darker than --body-bg */
+  --selected-bg: #e4e4e4; /* E.g. selected table cells */
+  --selected-row: #ffc;
+
+  --button-fg: #fff;
+  --button-bg: var(--primary);
+  --button-hover-bg: #609ab6;
+  --default-button-bg: var(--secondary);
+  --default-button-hover-bg: #205067;
+  --close-button-bg: #888; /* Previously #bbb, contrast 1.92 */
+  --close-button-hover-bg: #747474;
+  --delete-button-bg: #ba2121;
+  --delete-button-hover-bg: #a41515;
+
+  --object-tools-fg: var(--button-fg);
+  --object-tools-bg: var(--close-button-bg);
+  --object-tools-hover-bg: var(--close-button-hover-bg);
+}
+
+@font-face {
+  font-family: iran-sans;
+  font-style: normal;
+  font-weight: 900;
+  src: url("../../font-admin/fonts/eot/IRANSansWeb(FaNum)_Black.eot");
+  src: url("../../font-admin/fonts/eot/IRANSansWeb(FaNum)_Black.eot?#iefix")
+      format("embedded-opentype"),
+    /* IE6-8 */
+      url("../../font-admin/fonts/woff2/IRANSansWeb(FaNum)_Black.woff2")
+      format("woff2"),
+    /* FF39+,Chrome36+, Opera24+*/
+      url("../../font-admin/fonts/woff/IRANSansWeb(FaNum)_Black.woff")
+      format("woff"),
+    /* FF3.6+, IE9, Chrome6+, Saf5.1+*/
+      url("../../font-admin/fonts/ttf/IRANSansWeb(FaNum)_Black.ttf")
+      format("truetype");
+}
+@font-face {
+  font-family: iran-sans;
+  font-style: normal;
+  font-weight: bold;
+  src: url("../../font-admin/fonts/eot/IRANSansWeb(FaNum)_Bold.eot");
+  src: url("../../font-admin/fonts/eot/IRANSansWeb(FaNum)_Bold.eot?#iefix")
+      format("embedded-opentype"),
+    /* IE6-8 */
+      url("../../font-admin/fonts/woff2/IRANSansWeb(FaNum)_Bold.woff2")
+      format("woff2"),
+    /* FF39+,Chrome36+, Opera24+*/
+      url("../../font-admin/fonts/woff/IRANSansWeb(FaNum)_Bold.woff")
+      format("woff"),
+    /* FF3.6+, IE9, Chrome6+, Saf5.1+*/
+      url("../../font-admin/fonts/ttf/IRANSansWeb(FaNum)_Bold.ttf")
+      format("truetype");
+}
+@font-face {
+  font-family: iran-sans;
+  font-style: normal;
+  font-weight: 500;
+  src: url("../../font-admin/fonts/eot/IRANSansWeb(FaNum)_Medium.eot");
+  src: url("../../font-admin/fonts/eot/IRANSansWeb(FaNum)_Medium.eot?#iefix")
+      format("embedded-opentype"),
+    /* IE6-8 */
+      url("../../font-admin/fonts/woff2/IRANSansWeb(FaNum)_Medium.woff2")
+      format("woff2"),
+    /* FF39+,Chrome36+, Opera24+*/
+      url("../../font-admin/fonts/woff/IRANSansWeb(FaNum)_Medium.woff")
+      format("woff"),
+    /* FF3.6+, IE9, Chrome6+, Saf5.1+*/
+      url("../../font-admin/fonts/ttf/IRANSansWeb(FaNum)_Medium.ttf")
+      format("truetype");
+}
+@font-face {
+  font-family: iran-sans;
+  font-style: normal;
+  font-weight: 300;
+  src: url("../../font-admin/fonts/eot/IRANSansWeb(FaNum)_Light.eot");
+  src: url("../../font-admin/fonts/eot/IRANSansWeb(FaNum)_Light.eot?#iefix")
+      format("embedded-opentype"),
+    /* IE6-8 */
+      url("../../font-admin/fonts/woff2/IRANSansWeb(FaNum)_Light.woff2")
+      format("woff2"),
+    /* FF39+,Chrome36+, Opera24+*/
+      url("../../font-admin/fonts/woff/IRANSansWeb(FaNum)_Light.woff")
+      format("woff"),
+    /* FF3.6+, IE9, Chrome6+, Saf5.1+*/
+      url("../../font-admin/fonts/ttf/IRANSansWeb(FaNum)_Light.ttf")
+      format("truetype");
+}
+@font-face {
+  font-family: iran-sans;
+  font-style: normal;
+  font-weight: 200;
+  src: url("../../font-admin/fonts/eot/IRANSansWeb(FaNum)_UltraLight.eot");
+  src: url("../../font-admin/fonts/eot/IRANSansWeb(FaNum)_UltraLight.eot?#iefix")
+      format("embedded-opentype"),
+    /* IE6-8 */
+      url("../../font-admin/fonts/woff2/IRANSansWeb(FaNum)_UltraLight.woff2")
+      format("woff2"),
+    /* FF39+,Chrome36+, Opera24+*/
+      url("../../font-admin/fonts/woff/IRANSansWeb(FaNum)_UltraLight.woff")
+      format("woff"),
+    /* FF3.6+, IE9, Chrome6+, Saf5.1+*/
+      url("../../font-admin/fonts/ttf/IRANSansWeb(FaNum)_UltraLight.ttf")
+      format("truetype");
+}
+@font-face {
+  font-family: iran-sans;
+  font-style: normal;
+  font-weight: normal;
+  src: url("../../font-admin/fonts/eot/IRANSansWeb(FaNum).eot");
+  src: url("../../font-admin/fonts/eot/IRANSansWeb(FaNum).eot?#iefix")
+      format("embedded-opentype"),
+    /* IE6-8 */ url("../../font-admin/fonts/woff2/IRANSansWeb(FaNum).woff2")
+      format("woff2"),
+    /* FF39+,Chrome36+, Opera24+*/
+      url("../../font-admin/fonts/woff/IRANSansWeb(FaNum).woff") format("woff"),
+    /* FF3.6+, IE9, Chrome6+, Saf5.1+*/
+      url("../../font-admin/fonts/ttf/IRANSansWeb(FaNum).ttf")
+      format("truetype");
+}
+@font-face {
+  font-family: "Material Icons";
+  font-style: normal;
+  font-weight: 400;
+  src: url(https://example.com/MaterialIcons-Regular.eot); /* For IE6-8 */
+  src: local("Material Icons"), local("MaterialIcons-Regular"),
+    url(https://example.com/MaterialIcons-Regular.woff2) format("woff2"),
+    url(https://example.com/MaterialIcons-Regular.woff) format("woff"),
+    url(https://example.com/MaterialIcons-Regular.ttf) format("truetype");
+}
+@font-face {
+  font-family: "Material Icons";
+  font-style: normal;
+  font-weight: 400;
+  src: url(https://example.com/MaterialIcons-Regular.eot); /* For IE6-8 */
+  src: local("Material Icons"), local("MaterialIcons-Regular"),
+    url(https://example.com/MaterialIcons-Regular.woff2) format("woff2"),
+    url(https://example.com/MaterialIcons-Regular.woff) format("woff"),
+    url(https://example.com/MaterialIcons-Regular.ttf) format("truetype");
+}
+.iran-sans {
+  font-family: iran-sans;
+}
+.material-icons {
+  font-family: "Material Icons";
+  font-weight: normal;
+  font-style: normal;
+  font-size: 24px; /* Preferred icon size */
+  display: inline-block;
+  line-height: 1;
+  text-transform: none;
+  letter-spacing: normal;
+  word-wrap: normal;
+  white-space: nowrap;
+  direction: ltr;
+
+  /* Support for all WebKit browsers. */
+  -webkit-font-smoothing: antialiased;
+  /* Support for Safari and Chrome. */
+  text-rendering: optimizeLegibility;
+
+  /* Support for Firefox. */
+  -moz-osx-font-smoothing: grayscale;
+
+  /* Support for IE. */
+  font-feature-settings: "liga";
+}
+.material-icons.md-18 {
+  font-size: 18px;
+}
+.material-icons.md-24 {
+  font-size: 24px;
+}
+.material-icons.md-36 {
+  font-size: 36px;
+}
+.material-icons.md-48 {
+  font-size: 48px;
+}
+.text-size-15 {
+  font-size: 15px !important;
+}
+.text-size-16 {
+  font-size: 16px !important;
+}
+.text-size-12 {
+  font-size: 12px !important;
+}
+.text-size-13 {
+  font-size: 13px !important;
+}
+.text-size-14 {
+  font-size: 14px !important;
+}
+
+.text-size-17 {
+  font-size: 17px !important;
+}
+
+.text-size-18 {
+  font-size: 18px !important;
+}
+
+.text-size-19 {
+  font-size: 19px !important;
+}
+
+.text-size-20 {
+  font-size: 20px !important;
+}
+
+.font-weight-100 {
+  font-weight: 100 !important;
+}
+
+.font-weight-200 {
+  font-weight: 200 !important;
+}
+
+.font-weight-300 {
+  font-weight: 300 !important;
+}
+
+.font-weight-400 {
+  font-weight: 400 !important;
+}
+
+.font-weight-500 {
+  font-weight: 500 !important;
+}
+
+.font-weight-550 {
+  font-weight: 550 !important;
+}
+
+.font-weight-600 {
+  font-weight: 600 !important;
+}
+
+.font-weight-650 {
+  font-weight: 650 !important;
+}
+
+.font-weight-700 {
+  font-weight: 700 !important;
+}
+
+.font-weight-750 {
+  font-weight: 750 !important;
+}
+
+.font-weight-800 {
+  font-weight: 800 !important;
+}
+
+.font-weight-850 {
+  font-weight: 850 !important;
+}
+
+.font-style-normal {
+  font-style: normal !important;
+}
+
+* {
+  font-family: iran-sans;
+  font-size: 14px !important;
+}
+
+.changelist-filter-toggler {
+  direction: ltr !important;
+  position: relative !important;
+  margin-left: 15px;
+  float: left !important;
+}
+
+.top-level > a::after {
+  float: left !important;
+  transform: rotateZ(180deg);
+}
+
+ul.object-tools {
+  padding-right: 0 !important;
+}
+
+[required] {
+  font-family: 'iran-sans' !important;
+}
+
+input[type="submit"] {
+  font-family: 'iran-sans' !important;
+}
+
+#searchbar {
+  font-family: 'iran-sans' !important;
+}
+
+#content {
+  margin-right: 0px !important;
+  margin-left: 0px !important;
+}
+
+ul.actionlist {
+  margin-right: 0px !important;
+  padding-right: 0px !important;
+}
+
+.input-group:not(.has-validation)>:not(:last-child):not(.dropdown-toggle):not(.dropdown-menu), .input-group:not(.has-validation)>.dropdown-toggle:nth-last-child(n+3) {
+  border-top-left-radius: 0 !important;
+  border-bottom-left-radius: 0 !important;
+  border-top-right-radius: 5px !important;
+  border-bottom-right-radius: 5px !important;
+}
+
+.login #container input[type=text], .login #container input[type=password] {
+  background: #fff !important;
+  border-top-left-radius: 5px !important;
+  border-bottom-left-radius: 5px !important;
+  border-top-right-radius: 0 !important;
+  border-bottom-right-radius: 0 !important;
+}
+
+.login #container .pwd-visibility-toggle {
+  right: auto !important;
+  left: 8px !important;
+}
+
+#content-main {
+  background: hsl(0deg 0% 97%);
+  border-radius: 0px 0px 5px 5px;
+}
+
+input[type="submit"] {
+  width: 100%;
+  padding: 10px !important;
+  font-weight: 550 !important;
+  color: #4a4a4a !important;
+  background: gold !important;
+}
+
+.login #header {
+  border-radius: 5px 5px 0px 0px;
+}
+
+.submit-row {
+  padding-bottom: 0px !important;
+}
+
+.login .form-row label {
+  font-weight: 500 !important;
+}

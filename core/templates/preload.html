@@ -1,0 +1,26 @@
+{% load static %}
+<div id="preload" class="preload-parent position-fixed w-100 h-100">
+    <div class="preload-group text-center">
+        <img src="{% static 'image/1x/shhut-logo-3.svg' %}" style="width: 200px; height: 200px;" alt="">
+        <br><span class="font-weight-bold text-white text-size-16">دانـشـگــاه شهــید چــمــران پــردیـــس شهــدای هــویـزه</span>
+        <br><span class="pt-2 text-white text-size-15">در حــال بـارگــذاری صـفـحه</span>
+    </div>
+</div>
+
+<style>
+    
+    .preload-parent {
+        background: #292961;
+        z-index: 1000 !important;
+        display: flex;
+        top: 0;
+    }
+
+    .preload-group {
+        top: 50%;
+        right: 50%;
+        transform: translate(50%, -50%);
+        position: absolute;
+    }
+
+</style>

@@ -1,0 +1,47 @@
+body>* {
+    font-family: iran-sans;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+}
+
+.section-right {
+    position: absolute;
+    right: 0;
+    width: 50%;
+    background: #292961;
+    height: 100%;
+    transition: all 0.5s;
+}
+
+.section-left {
+    position: absolute;
+    left: 0;
+    width: 50%;
+    background: #292961;
+    height: 100%;
+    transition: all 0.5s;
+}
+
+.logo {
+    position: absolute;
+    z-index: 10 !important;
+    top: 50%;
+    right: 50%;
+    transform: translate(50%, -50%);
+    text-align: center;
+}
+
+.logo-image {
+    width: 200px;
+}
+
+.logo-text {
+    font-weight: 600;
+    font-size: 17px;
+    display: block;
+    font-family: iran-sans;
+    color: white;
+}

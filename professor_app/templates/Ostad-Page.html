@@ -1,0 +1,105 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}{{ p.p_user.first_name }} {{ p.p_user.last_name }}{% endblock title %}
+{% block styles %}
+<link rel="stylesheet" href="{% static 'css/single.css' %}" />
+{% endblock styles %}
+
+{% block content %}
+<div class="py-5"></div>
+<div dir="rtl" class="container">
+  <div dir="rtl" class="row">
+    <div class="col-12 mb-4 mt-4">
+      <div class="show-grouping">
+        <a href="{% url 'professor-all' %}"><span>اساتید |</span></a>
+        <a href="#"><span>{{ p.target_dep }} |</span></a>
+        <a href="#"><span>{{ p.sur_name }} </span></a>
+      </div>
+    </div>
+    <!-- sidebar -->
+    {% include 'includes/dynamic-sidebar.html' %}
+    <!-- sidebar -->
+    <div class="col-12 col-lg-9">
+      <div class="post-body mt-2 mt-lg-0">
+        <div class="w-100 post-title">
+          <span class="material-icons post-title-icon"> assignment </span>
+          <div class="font-weight-bold text-size-16 post-title-text">
+            استاد {{ p.p_user.first_name }} {{ p.p_user.last_name }}
+          </div>
+        </div>
+        <div class="w-100 post-text mt-3 rounded overflow-hidden">
+          <div class="col-12 px-0 rounded ostad-image-post-body d-flex">
+            <div class="ostad-image-design">
+              {% if p.image %}
+              <img class="rounded ostad-image-post" src="{{ p.image.url }}" alt="post image" />
+              {% else %}
+              <img class="rounded ostad-image-post" src="https://shhut.ac.ir/wp-content/uploads/2018/11/IMG_016.jpg"
+                alt="post image" />
+              {% endif %}
+            </div>
+            <div class="ostad-detail-design">
+              <p class="mb-1">نام : {{ p.p_user.first_name }}</p>
+
+              <p class="mb-1">نام خانوادگی : {{ p.p_user.last_name }}</p>
+
+              <p class="mb-0">ایمیل : {{ p.p_user.email }}</p>
+
+              <p class="mb-0">تلفن تماس : {{ p.phone_number }}</p>
+            </div>
+          </div>
+
+
+          <div class="col-12 mt-2 p-0" style="font-size:14px;">
+              {{ p.details|safe }}
+          </div>
+          <div class="col-12 p-0">
+          <div class="title-profosor-info">سوابق تحصیلی</div>
+          {{ pupload.p_education|safe }}
+
+          <div class="title-profosor-info">زمینه های تحقیقاتی مورد علاقه</div>
+          {{ pupload.p_liking|safe }}
+
+          <div class="title-profosor-info">مقالات چاپ شده در نشریات معتبر علمی- پژوهشی بین المللی و ISI</div>
+          {{ pupload.p_papers_isi|safe }}
+
+          <div class="title-profosor-info">مقالات چاپ شده در نشریات معتبر داخلی</div>
+          {{ pupload.p_papers|safe }}
+
+          <div class="title-profosor-info">همایش های بین المللی</div>
+          {{ pupload.p_convention_isi|safe }}
+
+          <div class="title-profosor-info">همایش های ملی و منطقه ای</div>
+          {{ pupload.p_convention|safe }}
+
+          <div class="title-profosor-info">تالیف و ترجمه کتاب</div>
+          {{ pupload.p_translation|safe }}
+
+          <div class="title-profosor-info">طرح های تحقیقاتی در دست اجرا</div>
+          {{ pupload.p_projects_pending|safe }}
+
+          <div class="title-profosor-info">طرح های تحقیقاتی خاتمه یافته</div>
+          {{ pupload.p_projects_complete|safe }}
+
+          <div class="title-profosor-info">راهنمایی و مشاوره پروژه های کارشناسی، پایان نامه های کارشناسی ارشد و رساله های دکتری</div>
+          {{ pupload.p_education_project|safe }}
+
+          <div class="title-profosor-info">فعالیتهای اجرایی</div>
+          {{ pupload.p_projects|safe }}
+
+          <div class="title-profosor-info">جوایز و افتخارات</div>
+          {{ pupload.p_prizes|safe }}
+          </div>
+        </div>
+        <div class="post-date">
+          <span class="col-12 px-0"> {{ date }} </span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock content %}
+{% block js %}
+<script src="{% static 'js/sidebar-post-animation.min.js' %}"></script>
+<script src="{% static 'js/show-hide-btnGroup.min.js' %}"></script>
+{% endblock js %}

@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="fa">
+
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#004a76" />
+    <meta name="description" content="وبسایت رسمی دانشگاه صنعتی شهدای هویزه">
+    <title>دانشگاه صنعتی شهدای هویزه - پردیس شهید چمران | {% block title %}{% endblock title %}</title>
+    <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.min.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/fn-style.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/style.min.css' %}" />
+    <link defer rel="stylesheet" href="{% static 'font/font.css' %}" />
+    <link defer href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+    <link rel="shortcut icon" href="{% static 'image/1x/shhut-logo-2.png' %}" />
+    <script src="{% static 'js/jquery-3.5.1.min.js' %}"></script>
+    <script defer src="{% static 'bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+    <script src="{% static 'js-admin/TeamFramWork.js' %}"></script>
+    {% block styles %}{% endblock styles %}
+  </head>
+
+  <body>
+    {% include 'preload.html' %}
+
+    {% include 'includes/nav.html' %}
+
+    <section class="login-popup-parent" id="login-popup-parent">
+      <div class="ll_2" style="position: absolute; width: 100%; height: 100%;"></div>
+      <form action="{% url 'login' %}" method="POST">
+        {% csrf_token %}
+        <div class="login-parent">
+          <div class="login-iamge-parent"
+            style="background: url('https://img9.irna.ir/old/Image/1396/13961214/82852809/N82852809-72220360.jpg');">
+
+          </div>
+          <div class="login-component">
+            <input type="text" name="email" placeholder="Email" id="get-student-id"
+              class="w-100">
+            <input type="password" name="password" id="get-student-two-id" placeholder="Password"
+              class="w-100 mt-2">
+            <button class="w-100 btn-submit-login mt-2 d-block text-center" type="submit" id="btn-submit-login">ورود به
+              پورتال
+            </button>
+          </div>
+        </div>
+      </form>
+
+      <script>
+        $("[name=login]").click(function () {
+          $("#login-popup-parent").slideToggle("fast");
+          $("body").css({ "overflow": "hidden" });
+        })
+
+        $(".ll_2").click(function () {
+          $("#login-popup-parent").slideToggle("fast");
+          $("body").css({ "overflow": "auto" });
+        })
+      </script>
+    </section>
+
+    <section id="search-bar-body" class="search-bar-body">
+      <div class="ll" style="position: absolute; width: 100%; height: 100%;"></div>
+      <form action="{% url 'search_query' %}" method="GET">
+        <div class="search-bar-body-child">
+          <input class="search-bar" dir="rtl" type="search" name="search-bar" id="search-bar"
+            placeholder="جستوجو کنید" />
+        </div>
+      </form>
+      <script>
+        $("#btn-search").click(function () {
+          $("#search-bar-body").slideToggle("fast");
+          $("body").css({ "overflow": "hidden" });
+        })
+
+        $(".ll").click(function () {
+          $("#search-bar-body").slideToggle("fast");
+          $("body").css({ "overflow": "auto" });
+        })
+      </script>
+    </section>
+
+    {% block content %}{% endblock content %}
+
+    <section class="email-send-box-post-body">
+      <div class="container">
+        <form method="POST" action="{% url 'subscribe' %}">
+          {% csrf_token %}
+          <div dir="rtl" class="email-send-box-post-box-style">
+            <div class="email-btn-body">
+              <input id="id_submit" name="submit" value="عضویت در خبر نامه" class="email-btn" type="submit">
+            </div>
+            <div class="email-box-body">
+              <input type="email" name="email_field" required="" id="id_email_field" class="email-box"
+                placeholder="ایمیل خود را وارد کنید">
+            </div>
+          </div>
+        </form>
+      </div>
+    </section>
+
+
+
+    {% include 'includes/footer.html' %}
+    <script src="{% static 'js/menu-little.min.js' %}"></script>
+    <script src="{% static 'js/gototop.min.js' %}"></script>
+    <script src="{% static 'js/header-main-list.min.js' %}"></script>
+    <script src="{% static 'js/post-image-size.min.js' %}"></script>
+    <script src="{% static 'js/show-hide-btnGroup.min.js' %}"></script>
+    <script src="{% static 'js/rm-preload.min.js' %}"></script>
+    {% block js %}{% endblock js %}
+
+  </body>
+
+</html>

@@ -1,0 +1,191 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}Search Results{% endblock title %}
+{% block content %}
+<div style="height: 20vh;"></div>
+
+
+
+<div class="container">
+	<div class="col-12 px-0 slidebar-body-parent">
+		<div class="sidebar-body">
+			<div class="sidebar-list">
+				<form action="{% url 'search_query' %}" method="GET" class="d-flex">
+					<input class="search-bar" dir="rtl" type="text" name="search-bar" id="search-bar"
+						placeholder="جستوجو کنید" value="{{ query }}" />
+					<input class="btn-search-bar" type="submit" value="جستوجو" />
+				</form>
+			</div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="d-block col-12 my-4" dir="rtl">
+			<div class="row">
+				{% for np in n_filter %}
+				{% include 'includes/news.html' %}
+				{% endfor %}
+			</div>
+		</div>
+
+		<div class="d-block col-12 my-4" dir="rtl">
+			<div class="row">
+				{% for nn in e_filter %}
+				{% include 'includes/event.html' %}
+				{% endfor %}
+			</div>
+		</div>
+
+		<div class="d-block col-12 my-4" dir="rtl">
+			<div class="row">
+				{% for object in l_filter %}
+				{% include 'includes/video.html' %}
+				{% endfor %}
+			</div>
+		</div>
+
+		<div class="d-block col-12 my-4" dir="rtl">
+			<div class="row">
+				{% for object in p_filter %}
+				{% include 'includes/video.html' %}
+				{% endfor %}
+			</div>
+		</div>
+
+	</div>
+</div>
+
+
+
+{% comment %} <script>
+	let width = window.innerWidth;
+	let height = window.innerHeight;
+	var HeightScroll = $(window).scrollTop() + height;
+
+	// News Animation
+
+	var NewsListAndIconTitleAnimation = $('.news-list').position().top;
+	var NewsListAndIconTitleAnimationHeight = $('.news-list').height() / 3;
+	if (HeightScroll - NewsListAndIconTitleAnimationHeight >= NewsListAndIconTitleAnimation) {
+		$('.newss-icon-title').addClass("newss-icon-title-animation-on");
+		$('.newss-title-underline').addClass("newss-title-underline-animation-on");
+		$('.news-list').addClass('news-list-animation-on');
+	} else {
+		$('.newss-icon-title').removeClass("newss-icon-title-animation-on");
+		$('.newss-title-underline').removeClass("newss-title-underline-animation-on");
+		$('.news-list').removeClass('news-list-animation-on');
+	}
+
+	// Event Animation
+
+	var EventListAndIconTitleAnimation = $('.events-list').position().top;
+	var EventListAndIconTitleAnimationHeight = $('.events-list').height() / 3;
+	if (HeightScroll - EventListAndIconTitleAnimationHeight >= EventListAndIconTitleAnimation) {
+		$('.events-icon-title').addClass("events-icon-title-animation-on");
+		$('.events-title-underline').addClass("events-title-underline-animation-on");
+		$('.events-list').addClass('events-list-animation-on');
+	} else {
+		$('.events-icon-title').removeClass("events-icon-title-animation-on");
+		$('.events-title-underline').removeClass("events-title-underline-animation-on");
+		$('.events-list').removeClass('events-list-animation-on');
+	}
+
+	// Videos conference Animation
+
+	var VideosAndIconTitleAnimation = $('.videos-body').position().top;
+	var VideosAndIconTitleAnimationHeight = $('.conference-list').height() / 3;
+	if (HeightScroll - VideosAndIconTitleAnimationHeight >= VideosAndIconTitleAnimation) {
+		$('.conference-icon').addClass("videos-icon-title-animation-on");
+		$('.conference-list').addClass("videos-list-animation-on");
+		$('.conference-underline').addClass("videos-title-underline-animation-on");
+	} else {
+		$('.conference-icon').removeClass("videos-icon-title-animation-on");
+		$('.conference-underline').removeClass("videos-title-underline-animation-on");
+		$('.conference-list').removeClass("videos-list-animation-on");
+	}
+
+	// Videos course Animation
+
+	var VideosCourseAndIconTitleAnimationcourse = $('.videos-body-two').position().top;
+	var VideosAndIconTitleAnimationHeightcourse = $('.course-list').height() / 3;
+	if (HeightScroll - VideosAndIconTitleAnimationHeightcourse >= VideosCourseAndIconTitleAnimationcourse) {
+		// course
+		$('.course-icon').addClass("videos-icon-title-animation-on");
+		$('.course-underline').addClass("videos-title-underline-animation-on");
+		$('.course-list').addClass("videos-list-animation-on");
+	} else {
+		// course
+		$('.course-icon').removeClass("videos-icon-title-animation-on");
+		$('.course-underline').removeClass("videos-title-underline-animation-on");
+		$('.course-list').removeClass("videos-list-animation-on");
+	}
+
+	$(window).scroll(function (event) {
+		let width = window.innerWidth;
+		let height = window.innerHeight;
+		var HeightScroll = $(window).scrollTop() + height;
+		// News Animation
+
+		var NewsListAndIconTitleAnimation = $('.news-list').position().top;
+		var NewsListAndIconTitleAnimationHeight = $('.news-list').height() / 3;
+		if (HeightScroll - NewsListAndIconTitleAnimationHeight >= NewsListAndIconTitleAnimation) {
+			$('.newss-icon-title').addClass("newss-icon-title-animation-on");
+			$('.newss-title-underline').addClass("newss-title-underline-animation-on");
+			$('.news-list').addClass('news-list-animation-on');
+		} else {
+			$('.newss-icon-title').removeClass("newss-icon-title-animation-on");
+			$('.newss-title-underline').removeClass("newss-title-underline-animation-on");
+			$('.news-list').removeClass('news-list-animation-on');
+		}
+
+		// Event Animation
+
+		var EventListAndIconTitleAnimation = $('.events-list').position().top;
+		var EventListAndIconTitleAnimationHeight = $('.events-list').height() / 3;
+		if (HeightScroll - EventListAndIconTitleAnimationHeight >= EventListAndIconTitleAnimation) {
+			$('.events-icon-title').addClass("events-icon-title-animation-on");
+			$('.events-title-underline').addClass("events-title-underline-animation-on");
+			$('.events-list').addClass('events-list-animation-on');
+		} else {
+			$('.events-icon-title').removeClass("events-icon-title-animation-on");
+			$('.events-title-underline').removeClass("events-title-underline-animation-on");
+			$('.events-list').removeClass('events-list-animation-on');
+		}
+
+		// Videos conference Animation
+
+		var VideosAndIconTitleAnimation = $('.videos-body').position().top;
+		var VideosAndIconTitleAnimationHeight = $('.conference-list').height() / 3;
+		if (HeightScroll - VideosAndIconTitleAnimationHeight >= VideosAndIconTitleAnimation) {
+			$('.conference-icon').addClass("videos-icon-title-animation-on");
+			$('.conference-list').addClass("videos-list-animation-on");
+			$('.conference-underline').addClass("videos-title-underline-animation-on");
+		} else {
+			$('.conference-icon').removeClass("videos-icon-title-animation-on");
+			$('.conference-underline').removeClass("videos-title-underline-animation-on");
+			$('.conference-list').removeClass("videos-list-animation-on");
+		}
+
+		// Videos course Animation
+
+		var VideosCourseAndIconTitleAnimationcourse = $('.videos-body-two').position().top;
+		var VideosAndIconTitleAnimationHeightcourse = $('.course-list').height() / 3;
+		if (HeightScroll - VideosAndIconTitleAnimationHeightcourse >= VideosCourseAndIconTitleAnimationcourse) {
+			// course
+			$('.course-icon').addClass("videos-icon-title-animation-on");
+			$('.course-underline').addClass("videos-title-underline-animation-on");
+			$('.course-list').addClass("videos-list-animation-on");
+		} else {
+			// course
+			$('.course-icon').removeClass("videos-icon-title-animation-on");
+			$('.course-underline').removeClass("videos-title-underline-animation-on");
+			$('.course-list').removeClass("videos-list-animation-on");
+		}
+
+	});
+</script> {% endcomment %}
+
+{% endblock content %}
+{% block js %}
+<script src="{% static 'js/image-news-notif-image-size.min.js' %}"></script>
+<script src="{% static 'js/gototop.min.js' %}"></script>
+{% endblock js %}

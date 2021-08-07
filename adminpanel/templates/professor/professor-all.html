@@ -1,0 +1,75 @@
+{% extends 'base-admin.html' %}
+
+{% block title %}Professor posts{% endblock title %}
+
+{% block content %}
+<div class="col-12">
+    <div class="c-card">
+        <div class="c-card-header">
+            <div class="row">
+                <div class="col-12 col-md-8 text-size-17 text-474747 py-3 font-weight-650">
+                    همه ی پست های شما
+                </div>
+                <div class="col-12 col-md-4">
+                    <input type="text" class="inp font-weight-550 text-black-50 fa-fade" id="list-filter"
+                        placeholder="دنبال چه چیزی می گردید">
+                </div>
+            </div>
+        </div>
+        <div class="c-card-body px-0">
+            <div class="table-responsive">
+                <table class="table table-borderless text-center" style="margin-bottom: 0 !important;">
+                    <thead class="font-weight-550 text-black-50 text-size-16">
+                        <tr>
+                            <th class="text-size-15">#</th>
+                            <th class="text-size-15">نام پست</th>
+                            <th class="text-size-15" style="width: 315px !important;">
+                                عملگرا</th>
+                        </tr>
+                    </thead>
+                    <tbody id="filtering" class="font-weight-550 text-474747">
+                        {% for pp in professor_posts %}
+                        <tr>
+                            <td>{{pp.pk}}</td>
+                            <td>{{pp.title}}</td>
+                            <td>
+                                <a href="{% url 'professor-post-delete' pp.pk %}" class="text-decoration-none"
+                                    style="color: #ff0037; margin-left: 15px;">
+                                    حذف کردن
+                                </a>
+                                <a href="{% url 'professor-post-edit' pp.pk %}" class="text-decoration-none"
+                                    style="color: #00d13f !important;">
+                                    ویرایش کردن
+                                </a>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}
+
+{% block extra_js %}
+<!-- filter table -->
+<script>
+    $(document).ready(function () {
+        $("#list-filter").on("keyup", function () {
+            var value = $(this).val().toLowerCase();
+            $("#filtering tr").filter(function () {
+                $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+            });
+        });
+    });
+</script>
+
+<!-- remove class fa-fade for list-filter -->
+<script>
+    $(window).click(function () {
+        $("#list-filter").removeClass("fa-fade")
+    })
+</script>
+
+{% endblock extra_js %}
