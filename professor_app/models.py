@@ -10,16 +10,17 @@ from django.db.models import (
     ImageField,
     Model,
     EmailField,
-    FileField
+    FileField,
 )
 from django.utils.translation import gettext_lazy as _
 
 
 class Professor(Model):
-    p_user = OneToOneField(User, on_delete=CASCADE, blank=True, null=True)
+    p_user = OneToOneField(User, on_delete=CASCADE, blank=True)
     f_name = CharField(verbose_name=_("نام"), max_length=255)
     l_name = CharField(verbose_name=_("نام خانوادگی"), max_length=255)
     email = EmailField(verbose_name=_("ایمیل"), max_length=255)
+    password = CharField(verbose_name=_("پسورد"), max_length=255, unique=True)
     image = ImageField(
         verbose_name=_("عکس"), default="", upload_to="staff/", blank=True
     )

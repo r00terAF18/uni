@@ -56,7 +56,6 @@
       {% endfor %}
       
       {% if request.user.is_staff %}
-        <li class="mr-2"><button class="btn-list"><a href="{% url 'index-admin' %}">ورود به پورتال</a></button></li>
         <li class="mr-2"><button class="btn-list"><a href="{% url 'logout' %}">خروج از اکانت</a></button></li>
       {% else %}
         <li class="mr-2"><button class="btn-list" id="login" name="login">ورود به پورتال</button></li>
@@ -99,7 +98,6 @@
         {% endfor %}
 
         {% if request.user.is_staff %}
-          <li><a href="{% url 'index-admin' %}" class="btn-list-little btn-list-little-a">ورود به پورتال</a></li>
           <li><a href="{% url 'logout' %}" class="btn-list-little btn-list-little-a">خروج از اکانت</a></li>
         {% else %}
           <li><button class="btn-list-little btn-list-little-a" id="login" name="login">ورود به پورتال</button></li>

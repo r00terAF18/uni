@@ -164,7 +164,7 @@ STATIC_URL = "/static/"
 STATIC_ROOT = BASE_DIR / "staticfiles"
 STATICFILES_DIRS = (BASE_DIR / "static/",)
 
-LOGIN_REDIRECT_URL = "index-admin"
+LOGIN_REDIRECT_URL = "/admin"
 LOGIN_URL = "home_view"
 LOGOUT_REDIRECT_URL = "/"
 

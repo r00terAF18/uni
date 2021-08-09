@@ -5,11 +5,6 @@ from django.contrib.auth.models import User
 from django.shortcuts import redirect, render
 
 
-@login_required
-def index_admin(request):
-    return render(request, "index-admin.html")
-
-
 def professor_login(request):
     if request.method == "POST":
         data = request.POST
@@ -24,7 +19,7 @@ def professor_login(request):
                 request,
                 f"Professor {u.first_name} {u.last_name} logged in Successfully",
             )
-            return redirect("index-admin")
+            return redirect("/admin")
         else:
             messages.error(request, f"Provided Information was not correct")
     else:

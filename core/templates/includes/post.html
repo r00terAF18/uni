@@ -1,7 +1,7 @@
 {% load static %}
 <div class="col-12 col-sm-6 col-md-4 col-lg-3 my-2">
     <button class="notification-body-btn">
-        <a href="{% url 'news_detail' sp.id %}">
+        <a href="{{sp.get_absolute_url}}">
             <div class="notification-body">
                 <div class="notification-university-logo-body">
                     <p class="information-notifi-title">جزئیات پست</p>

@@ -18,7 +18,7 @@
     {% for l in lectures %}
     <div class="col-12 col-sm-6 col-md-4 col-lg-3 my-2">
       <button class="notification-body-btn">
-        <a href="{% url 'lecture_detail' l.id %}">
+        <a href="{{l.get_absolute_url}}">
           <div class="notification-body">
             <div class="notification-university-logo-body">
               <img class="notification-university-logo" src="{% static 'image/1x/shhut-logo-2.png' %}" alt="" />

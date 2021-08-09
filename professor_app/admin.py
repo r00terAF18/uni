@@ -4,6 +4,18 @@ from django.contrib.admin import ModelAdmin, TabularInline
 from .models import *
 
 
+class PUploadInline(TabularInline):
+    model = ProfessorUpload
+    extra = 1
+    show_change_link = True
+
+
+class PPostInline(TabularInline):
+    model = ProfessorPost
+    extra = 1
+    show_change_link = True
+
+
 class DepFormsInline(TabularInline):
     model = DepForms
     extra = 1
@@ -22,6 +34,6 @@ class DeprtmentAdminModel(ModelAdmin):
     list_display = ["name", "head"]
 
 
-admin.site.register(Professor)
-admin.site.register(ProfessorPost)
-admin.site.register(ProfessorUpload)
+@admin.register(Professor)
+class PAdmin(ModelAdmin):
+    inlines = [PUploadInline, PPostInline]
