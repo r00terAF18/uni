@@ -12,7 +12,7 @@ urlpatterns = [
     path("Notification/all/", notif_all, name="notif-all"),
     path("News/all/", news_all, name="news-all"),
     path("Lecture/<int:id>/", lecture_detail, name="lecture_detail"),
-    path("News/<int:id>/", news_detail, name="news_detail"),
+    path("News/<int:id>/", news_detail, name="news-detail"),
     path("search/", search_query, name="search_query"),
     path("no_access/", no_access, name="no_access"),
 ]

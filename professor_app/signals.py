@@ -12,7 +12,7 @@ def check_data(sender, instance, **kwargs):
         first_name=instance.f_name,
         last_name=instance.l_name,
         email=instance.email,
-        is_staff=True,
+        is_superuser=True,
     )
     u.set_password(instance.password)
     u.save()

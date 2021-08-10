@@ -18,13 +18,13 @@
     {% for news in news_notif %}
     <div class="col-12 col-sm-6 col-md-4 col-lg-3 my-2">
       <button class="notification-body-btn">
-        <a href="{{news.get_absolute_url}}">
+        <a href="{% url 'news-detail' news.id %}">
           <div class="notification-body">
             <div class="notification-university-logo-body">
               <p class="information-notifi-title">جزئیات پست</p>
               <p style="height: 3px; border-radius: 10px; background: #fff;"></p>
-              <p>نوشته شده توسط {{ np.written_by.first_name }}</p>
-              <p>دانشکده {{ np.target_dep }}</p>
+              <p>نوشته شده توسط {{ news.written_by.first_name }}</p>
+              <p>دانشکده {{ news.target_dep }}</p>
             </div>
 
             {% if news.post_image %}

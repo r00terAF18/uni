@@ -42,12 +42,20 @@ class NewsPostAdmin(admin.ModelAdmin):
     list_per_page = 5
     view_on_site = False
 
+    def save_model(self, request, obj, form, change) -> None:
+        obj.written_by = request.user
+        return super().save_model(request, obj, form, change)
+
 
 @admin.register(Lecture)
 class LectureAdmin(admin.ModelAdmin):
     actions = [this_publish, this_draft]
     list_display = ["title", "date_created", "draft"]
     list_editable = ["draft"]
+
+    def save_model(self, request, obj, form, change) -> None:
+        obj.written_by = request.user
+        return super().save_model(request, obj, form, change)
 
 
 @admin.register(Event)

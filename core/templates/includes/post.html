@@ -1,17 +1,17 @@
 {% load static %}
 <div class="col-12 col-sm-6 col-md-4 col-lg-3 my-2">
     <button class="notification-body-btn">
-        <a href="{{sp.get_absolute_url}}">
+        <a href="{% url 'p-post' pp.title %}">
             <div class="notification-body">
                 <div class="notification-university-logo-body">
                     <p class="information-notifi-title">جزئیات پست</p>
                     <p style="height: 3px; border-radius: 10px; background: #fff;"></p>
-                    <p>نوشته شده توسط {{sp.from_student}}</p>
-                    <p>دانشکده {{ sp.target_dep }}</p>
+                    <p>نوشته شده توسط {{pp.professor}}</p>
+                    <p>دانشکده {{ dep }}</p>
                 </div>
 
-                {% if sp.post_image %}
-                <div class="notification-image-body" style="background: url('{{ sp.post_image.url }}')">
+                {% if pp.image %}
+                <div class="notification-image-body" style="background: url('{{ pp.image.url }}')">
                 </div>
                 {% else %}
                 <div class="notification-image-body" style="background: url('{% static 'image/1x/atlaie.png' %}')">
@@ -22,13 +22,13 @@
                     <!-- تیتل -->
                     <div class="notification-title-body">
                         <div class="notification-title">
-                            <span style="overflow: hidden; text-overflow: ellipsis">{{ sp.title }}</span>
+                            <span style="overflow: hidden; text-overflow: ellipsis">{{ pp.title }}</span>
                         </div>
                     </div>
                     <!-- تاریخ -->
                     <div class="notification-date-body">
                         <div class="notification-date">
-                            <span>{{ sp.get_time }}</span>
+                            <span>{{ pp.get_time }}</span>
                         </div>
                     </div>
                 </div>

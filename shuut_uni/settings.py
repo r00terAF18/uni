@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     "django_filters",
     "crispy_forms",
     "ckeditor",
+    "django_jalali",
     # OWN/CUSTOM APPS
     "core.apps.CoreConfig",
     "pages_app.apps.PagesAppConfig",
@@ -69,7 +70,7 @@ ROOT_URLCONF = "shuut_uni.urls"
 TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
-        "DIRS": [BASE_DIR / "adminpanel" / "templates"],
+        "DIRS": [BASE_DIR / "adminpanel" / "templates", BASE_DIR / "core" / "templates"],
         "APP_DIRS": True,
         "OPTIONS": {
             "context_processors": [
@@ -141,7 +142,7 @@ FILE_UPLOAD_MAX_MEMORY_SIZE = 5021440  # i.e. 5 MB
 # read before a SuspiciousOperation (RequestDataTooBig) is raised.
 DATA_UPLOAD_MAX_MEMORY_SIZE = 5021440  # i.e. 5 MB
 
-LANGUAGE_CODE = "fa-AF"
+LANGUAGE_CODE = "fa-IR"
 # LANGUAGE_CODE = "en-US"
 
 TIME_ZONE = "Asia/Tehran"

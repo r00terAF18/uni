@@ -12,8 +12,8 @@
     <div class="col-12 mb-4 mt-4">
       <div class="show-grouping">
         <a href="{% url 'professor-all' %}"><span>اساتید |</span></a>
-        <a href="#"><span>{{ p.target_dep }} |</span></a>
-        <a href="#"><span>{{ p.sur_name }} </span></a>
+        <a href="#"><span> دانشکده {{ dep }} |</span></a>
+        <a href="#"><span> {{ p.f_name}} {{ p.l_name }} </span></a>
       </div>
     </div>
     <!-- sidebar -->
@@ -53,41 +53,66 @@
               {{ p.details|safe }}
           </div>
           <div class="col-12 p-0">
-          <div class="title-profosor-info">سوابق تحصیلی</div>
-          {{ pupload.p_education|safe }}
 
-          <div class="title-profosor-info">زمینه های تحقیقاتی مورد علاقه</div>
-          {{ pupload.p_liking|safe }}
+          {% if pupload.p_education %}
+            <div class="title-profosor-info">سوابق تحصیلی</div>
+            {{ pupload.p_education|safe }}
+          {% endif %}
 
-          <div class="title-profosor-info">مقالات چاپ شده در نشریات معتبر علمی- پژوهشی بین المللی و ISI</div>
-          {{ pupload.p_papers_isi|safe }}
+          {% if pupload.p_liking %}
+            <div class="title-profosor-info">زمینه های تحقیقاتی مورد علاقه</div>
+            {{ pupload.p_liking|safe }}
+          {% endif %}
 
-          <div class="title-profosor-info">مقالات چاپ شده در نشریات معتبر داخلی</div>
-          {{ pupload.p_papers|safe }}
+          {% if pupload.p_papers_isi %}
+            <div class="title-profosor-info">مقالات چاپ شده در نشریات معتبر علمی- پژوهشی بین المللی و ISI</div>
+            {{ pupload.p_papers_isi|safe }}
+          {% endif %}
 
-          <div class="title-profosor-info">همایش های بین المللی</div>
-          {{ pupload.p_convention_isi|safe }}
+          {% if pupload.p_papers %}
+            <div class="title-profosor-info">مقالات چاپ شده در نشریات معتبر داخلی</div>
+            {{ pupload.p_papers|safe }}
+          {% endif %}
 
-          <div class="title-profosor-info">همایش های ملی و منطقه ای</div>
-          {{ pupload.p_convention|safe }}
+          {% if pupload.p_convention_isi %}
+            <div class="title-profosor-info">همایش های بین المللی</div>
+            {{ pupload.p_convention_isi|safe }}
+          {% endif %}
 
-          <div class="title-profosor-info">تالیف و ترجمه کتاب</div>
-          {{ pupload.p_translation|safe }}
+          {% if pupload.p_convention %}
+            <div class="title-profosor-info">همایش های ملی و منطقه ای</div>
+            {{ pupload.p_convention|safe }}
+          {% endif %}
 
-          <div class="title-profosor-info">طرح های تحقیقاتی در دست اجرا</div>
-          {{ pupload.p_projects_pending|safe }}
+          {% if pupload.p_translation %}
+            <div class="title-profosor-info">تالیف و ترجمه کتاب</div>
+            {{ pupload.p_translation|safe }}
+          {% endif %}
 
-          <div class="title-profosor-info">طرح های تحقیقاتی خاتمه یافته</div>
-          {{ pupload.p_projects_complete|safe }}
+          {% if pupload.p_projects_pending %}
+            <div class="title-profosor-info">طرح های تحقیقاتی در دست اجرا</div>
+            {{ pupload.p_projects_pending|safe }}
+          {% endif %}
 
-          <div class="title-profosor-info">راهنمایی و مشاوره پروژه های کارشناسی، پایان نامه های کارشناسی ارشد و رساله های دکتری</div>
-          {{ pupload.p_education_project|safe }}
+          {% if pupload.p_projects_complete %}
+            <div class="title-profosor-info">طرح های تحقیقاتی خاتمه یافته</div>
+            {{ pupload.p_projects_complete|safe }}
+          {% endif %}
 
-          <div class="title-profosor-info">فعالیتهای اجرایی</div>
-          {{ pupload.p_projects|safe }}
+          {% if pupload.p_education_project %}
+            <div class="title-profosor-info">راهنمایی و مشاوره پروژه های کارشناسی، پایان نامه های کارشناسی ارشد و رساله های دکتری</div>
+            {{ pupload.p_education_project|safe }}
+          {% endif %}
 
-          <div class="title-profosor-info">جوایز و افتخارات</div>
-          {{ pupload.p_prizes|safe }}
+          {% if pupload.p_projects %}
+            <div class="title-profosor-info">فعالیتهای اجرایی</div>
+            {{ pupload.p_projects|safe }}
+          {% endif %}
+
+          {% if pupload.p_prizes %}
+            <div class="title-profosor-info">جوایز و افتخارات</div>
+            {{ pupload.p_prizes|safe }}
+          {% endif %}
           </div>
         </div>
         <div class="post-date">

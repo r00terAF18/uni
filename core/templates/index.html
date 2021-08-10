@@ -134,11 +134,11 @@
             <div class="events-list mt-5">
                 <div dir="rtl" class="row">
                     {% if first_four_notification %}
-                    {% for nn in first_four_notification %}
-                    {% include 'includes/event.html' %}
-                    {% endfor %}
+                        {% for nn in first_four_notification %}
+                            {% include 'includes/event.html' %}
+                        {% endfor %}
                     {% else %}
-                    {% include 'includes/no-event.html' %}
+                        {% include 'includes/no-event.html' %}
                     {% endif %}
                 </div>
             </div>
@@ -210,14 +210,16 @@
                     <div class="posts-title-underline"></div>
                 </div>
                 <div class="w-50 posts-all-link-body">
-                    <a class="text-sise-15 text-black" href=""><span
+                    <a class="text-sise-15 text-black" href="{% url 'posts-all' %}"><span
                             class="material-icons posts-icon-title">subject</span>همه</a>
                 </div>
             </div>
             <div class="post-list mt-3">
                 <div dir="rtl" class="row">
-                    {% for sp in first_four_sp %}
-                    {% include 'includes/post.html'%}
+                    {% for pp in first_four_pp %}
+                        {% for dep in deps %}
+                            {% include 'includes/post.html'%}
+                        {% endfor %}
                     {% endfor %}
                 </div>
             </div>

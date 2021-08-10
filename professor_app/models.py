@@ -1,22 +1,23 @@
 from ckeditor.fields import RichTextField
 from django.contrib.auth.models import User
 from django.db.models import (
-    DO_NOTHING,
     CASCADE,
-    OneToOneField,
-    ManyToManyField,
+    DO_NOTHING,
     CharField,
-    ForeignKey,
-    ImageField,
-    Model,
     EmailField,
     FileField,
+    ForeignKey,
+    ImageField,
+    ManyToManyField,
+    Model,
+    OneToOneField,
 )
 from django.utils.translation import gettext_lazy as _
+from django_jalali.db.models import jDateTimeField
 
 
 class Professor(Model):
-    p_user = OneToOneField(User, on_delete=CASCADE, blank=True)
+    p_user = OneToOneField(User, on_delete=CASCADE, blank=True, editable=False)
     f_name = CharField(verbose_name=_("نام"), max_length=255)
     l_name = CharField(verbose_name=_("نام خانوادگی"), max_length=255)
     email = EmailField(verbose_name=_("ایمیل"), max_length=255)
@@ -97,9 +98,16 @@ class ProfessorPost(Model):
         verbose_name=_("عکس"), upload_to="professor_post/", blank=True, null=True
     )
     content = RichTextField("متن")
+    date_created = jDateTimeField(_("تاریِخ"), auto_now_add=True)
 
     def __str__(self) -> str:
         return str(self.title)
+    
+    def get_time(self):
+        # This du dad saves it with miliseconds, and so we first remove date, then milisecond
+        date = str(self.date_created).split(" ")[0]
+        time = str(self.date_created).split(" ")[1].split(".")[0]
+        return f"{date} - {time}"
 
     class Meta:
         verbose_name = _("پست استاد")

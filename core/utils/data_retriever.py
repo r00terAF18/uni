@@ -1,5 +1,22 @@
 from slider_app.models import Carousel, CarouselItem
 from sidebar_app.models import Sidebar, SidebarItem
+from professor_app.models import *
+
+
+def get_pp():
+    all_pp = ProfessorPost.objects.all()
+
+    first_four_pp = []
+    deps = []
+
+    for pp in all_pp:
+        first_four_pp.append(pp)
+        dep = Departmant.objects.get(head=pp.professor.id)
+        deps.append(dep)
+        if len(first_four_pp) == 4:
+            break
+
+    return first_four_pp, deps
 
 
 def first_of_n(n, filter_item, p_style):

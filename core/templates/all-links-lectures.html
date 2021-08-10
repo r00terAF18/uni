@@ -18,10 +18,13 @@
     {% for l in lectures %}
     <div class="col-12 col-sm-6 col-md-4 col-lg-3 my-2">
       <button class="notification-body-btn">
-        <a href="{{l.get_absolute_url}}">
+        <a href="{% url 'lecture_detail' l.id %}">
           <div class="notification-body">
             <div class="notification-university-logo-body">
-              <img class="notification-university-logo" src="{% static 'image/1x/shhut-logo-2.png' %}" alt="" />
+              <p class="information-notifi-title">جزئیات آمــوزش</p>
+              <p style="height: 3px; border-radius: 10px; background: #fff;"></p>
+              <p>نوشته شده توسط {{ l.written_by.first_name }}</p>
+              <p>دانشکده {{ l.target_dep }}</p>
             </div>
 
             {% if l.post_image %}

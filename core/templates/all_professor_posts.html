@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}همه پست ها{% endblock title %}
+{% block styles %}
+<link rel="stylesheet" href="{% static 'css/all-links-news.css' %}" />
+<script src="{% static 'js/jQuery.js' %}"></script>
+{% endblock styles %}
+
+{% block content %}
+<div class="py-5"></div>
+<div class="container">
+  <div class="text-center">
+    <span class="text-size-15">همه پست ها</span>
+    <div class="all-link-news-underline"></div>
+  </div>
+  <div dir="rtl" class="row mt-4">
+    {% for post in posts %}
+    <div class="col-12 col-sm-6 col-md-4 col-lg-3 my-2">
+      <button class="news-body-btn">
+        <a href="{% url 'p-post' post.title %}">
+          <div class="news-body">
+            <div class="news-university-logo-body">
+              <img class="news-university-logo" src="{% static 'image/1x/shhut-logo-2.png' %}" alt="" />
+            </div>
+            <div class="news-image-body">
+              {% if post.image %}
+              <img class="notification-image" src="{{ post.image.url }}" alt="banner" />
+              {% else %}
+              <img class="notification-image" src="{% static 'image/1x/atlaie.png' %}" alt="banner" />
+              {% endif %}
+            </div>
+            <!-- تیتل -->
+            <div class="news-title-body">
+              <div class="news-title">
+                <span>{{ post.title }}</span>
+              </div>
+            </div>
+            <!-- تاریخ -->
+            <div class="news-date-body">
+              <div class="news-date">
+                <span>{{post.get_time}}</span>
+              </div>
+            </div>
+          </div>
+        </a>
+      </button>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+
+{% endblock content %}
+
+{% block js %}
+<script src="{% static 'js/image-news-notif-image-size.min.js' %}"></script>
+{% endblock js %}
