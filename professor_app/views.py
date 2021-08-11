@@ -1,10 +1,18 @@
 from datetime import datetime
 
-from sidebar_app.models import Sidebar
 from django.contrib.auth.models import User
-from django.shortcuts import get_object_or_404, render
 from django.http import Http404
-from .models import Departmant, DepForms, DepLab, Professor, ProfessorUpload, ProfessorPost
+from django.shortcuts import get_object_or_404, render
+from sidebar_app.models import Sidebar
+
+from .models import (
+    Departmant,
+    DepForms,
+    DepLab,
+    Professor,
+    ProfessorPost,
+    ProfessorUpload,
+)
 
 
 def professor_all(request):

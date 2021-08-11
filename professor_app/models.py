@@ -32,8 +32,9 @@ class Professor(Model):
         verbose_name = "استاد"
         verbose_name_plural = "اساتید"
 
+
     def __str__(self):
-        return f"{self.p_user}"
+        return f"{self.f_name}"
 
 
 class Departmant(Model):

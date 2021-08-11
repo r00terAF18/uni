@@ -37,3 +37,4 @@ class DeprtmentAdminModel(ModelAdmin):
 @admin.register(Professor)
 class PAdmin(ModelAdmin):
     inlines = [PUploadInline, PPostInline]
+
