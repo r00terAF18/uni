@@ -2,7 +2,7 @@ from django.apps import AppConfig
 
 
 class ProfessorAppConfig(AppConfig):
-    verbose_name = "اساتید | دانشکده"
+    verbose_name = "اساتید"
     name = "professor_app"
 
     def ready(self):

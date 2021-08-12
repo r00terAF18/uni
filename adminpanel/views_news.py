@@ -1,6 +1,6 @@
-from core.models import NewsPost
-from professor_app.models import Departmant
 from django.shortcuts import redirect, render
+from faculty_app.models import Departmant
+from news_app.models import NewsPost
 
 from .forms import NewsForm
 

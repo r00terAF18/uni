@@ -1,0 +1,40 @@
+<div class="col-12 col-lg-3">
+    <div class="col-12 px-0 slidebar-body-parent">
+        <div class="sidebar-body">
+            <ul class="sidebar-list">
+                <li class="sidebar-li">
+                    <button class="sidebar-btn"><a href="/">صفحه اصلی</a></button>
+                </li>
+                {% for dp in list_dp %}
+                    <li class="sidebar-li mt-2">
+                        <button class="sidebar-btn">
+                            <a href="{% url 'dp_view' dp.name %}">دانشکده {{ dp.name }}</a>
+                        </button>
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+        <div class="my-3">
+            <div class="sidebar-body">
+                <ul class="sidebar-list">
+                    <li class="sidebar-li">
+                        <button class="sidebar-btn">
+                            <a href="#">سامانه ناد</a>
+                        </button>
+                    </li>
+                    <li class="sidebar-li mt-2">
+                        <button class="sidebar-btn">
+                            <a href="{% url 'info-all' %}">اطلاعیه ها</a>
+                        </button>
+                    </li>
+                    <li class="sidebar-li mt-2">
+                        <button class="sidebar-btn"><a href="{% url 'news-all' %}">اخبار</a></button>
+                    </li>
+                    <li class="sidebar-li mt-2">
+                        <button class="sidebar-btn"><a href="{% url 'event-all' %}">رویداد ها</a></button>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>

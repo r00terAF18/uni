@@ -45,9 +45,14 @@ INSTALLED_APPS = [
     "ckeditor",
     "django_jalali",
     # OWN/CUSTOM APPS
-    "core.apps.CoreConfig",
+    "news_app.apps.NewsConfig",
+    "conference_app.apps.ConferenceAppConfig",
+    "event_app.apps.EventAppConfig",
+    "general_post_app.apps.GeneralPostAppConfig",
+    "lecture_app.apps.LectureAppConfig",
     "pages_app.apps.PagesAppConfig",
     "professor_app.apps.ProfessorAppConfig",
+    "faculty_app.apps.FacultyAppConfig",
     "slider_app.apps.SliderAppConfig",
     "sidebar_app.apps.SidebarAppConfig",
     "newsletter.apps.NewsletterConfig",
@@ -70,7 +75,7 @@ ROOT_URLCONF = "shuut_uni.urls"
 TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
-        "DIRS": [BASE_DIR / "adminpanel" / "templates", BASE_DIR / "core" / "templates"],
+        "DIRS": [BASE_DIR / "adminpanel" / "templates", BASE_DIR / "news_app" / "templates"],
         "APP_DIRS": True,
         "OPTIONS": {
             "context_processors": [
@@ -81,7 +86,7 @@ TEMPLATES = [
                 "pages_app.cp.all_menus",
                 "pages_app.cp.all_pages",
                 "pages_app.cp.all_sub_menus",
-                "professor_app.cp.list_dp",
+                "faculty_app.cp.list_dp",
                 "sidebar_app.cp.list_si",
             ],
         },

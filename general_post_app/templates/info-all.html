@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}همه اطلاعیه هـا{% endblock title %}
+{% block styles %}
+<link rel="stylesheet" href="{% static 'css/all-links-notificaton.css' %}" />
+<script src="{% static 'js/jQuery.js' %}"></script>
+{% endblock styles %}
+
+{% block content %}
+
+<div class="py-5"></div>
+<div class="container">
+  <div class="text-center">
+    <span class="text-size-15">همه اطلاعیه هـا</span>
+    <div class="all-link-notification-underline"></div>
+  </div>
+  <div dir="rtl" class="row mt-4">
+    {% for info in infos %}
+    <div class="col-12 col-sm-6 col-md-4 col-lg-3 my-2">
+      <button class="notification-body-btn">
+        <a href="{% url 'info-detail' info.title %}">
+          <div class="notification-body">
+            <div class="notification-university-logo-body">
+              <p class="information-notifi-title">جزئیات پست</p>
+              <p style="height: 3px; border-radius: 10px; background: #fff;"></p>
+              <p>نوشته شده توسط {{ info.written_by.first_name }}</p>
+              <p>دانشکده {{ info.target_dep }}</p>
+            </div>
+
+            {% if info.post_image %}
+            <div class="notification-image-body" style="background: url('{{ info.post_image.url }}')">
+            </div>
+            {% else %}
+            <div class="notification-image-body" style="background: url('{% static 'image/1x/atlaie.png' %}')">
+            </div>
+            {% endif %}
+
+            <div class="notification-title-date-body">
+              <!-- تیتل -->
+              <div class="notification-title-body">
+                <div class="notification-title">
+                  <span style="overflow: hidden; text-overflow: ellipsis">{{ info.title }}</span>
+                </div>
+              </div>
+              <!-- تاریخ -->
+              <div class="notification-date-body">
+                <div class="notification-date">
+                  <span>{{ info.convert_date }} {{ info.date_created | time:"H:i" }}</span>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </a>
+      </button>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+
+{% endblock content %}
+{% block js %}
+<script src="{% static 'js/image-news-notif-image-size.min.js' %}"></script>
+{% endblock js %}

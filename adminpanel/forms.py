@@ -1,10 +1,14 @@
-from core.models import Lecture, NewsPost, Event
 from django.forms import ModelForm
 from django.forms.fields import CharField, ImageField, URLField
-from django.forms.widgets import FileInput, TextInput, URLInput, DateInput
+from django.forms.widgets import DateInput, FileInput, TextInput, URLInput
+from event_app.models import Event
+from faculty_app.models import Departmant
+from lecture_app.models import Lecture
+from news_app.models import NewsPost
+from pages_app.models import Menu, SubMenu, SubMenuPage
+from professor_app.models import ProfessorPost, ProfessorUpload
+
 from .models import UniSystem
-from professor_app.models import ProfessorPost, ProfessorUpload, Departmant
-from pages_app.models import SubMenu, SubMenuPage, Menu
 
 
 class NewsForm(ModelForm):

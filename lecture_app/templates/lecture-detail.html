@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}{{ lecture.title }}{% endblock title %}
+{% block styles %}
+<link rel="stylesheet" href="{% static 'css/single.css' %}" />
+{% endblock styles %}
+
+{% block content %}
+<div class="py-5"></div>
+<div dir="rtl" class="container">
+  <div dir="rtl" class="row">
+    <div class="col-12 mb-4 mt-3">
+      <div class="show-grouping">
+        <a href="#"><span>آموزش |</span></a>
+        <a href="#"><span>{{ lecture.get_time }} |</span></a>
+        <a href="#"><span>{{ lecture.title }} </span></a>
+      </div>
+    </div>
+    <!-- sidebar -->
+    {% include 'includes/dynamic-sidebar.html' %}
+    <!-- sidebar -->
+    <!-- post -->
+    <div class="col-12 col-lg-9">
+      <div class="post-body mt-2 mt-lg-0">
+        <div class="w-100 post-title">
+          <span class="material-icons post-title-icon"> assignment </span>
+          <div class="font-weight-bold text-size-16 post-title-text">
+            {{ lecture.title }}
+          </div>
+        </div>
+        <div class="w-100 post-text mt-3 rounded overflow-hidden">
+          {% if lecture.post_image %}
+          <div class="col-12 px-0 rounded image-post-body" style="background: url('{{ lecture.post_image.url }}')">
+          </div>
+          {% else %}
+          <div class="col-12 px-0 rounded image-post-body"
+            style="background: url('{% static 'image/1x/atlaie.png' %}')">
+          </div>
+          {% endif %}
+
+          <div class="col-12 p-0 mt-2" style="font-size: 14px !important;">
+            {{ lecture.content|safe }}
+          </div>
+        </div>
+        <div class="post-date">
+          <span class="col-12 px-0">{{ lecture.get_time }} - ساعت</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock content %}
+{% block js %}
+<script src="{% static 'js/sidebar-post-animation.min.js' %}"></script>
+<script src="{% static 'js/show-hide-btnGroup.min.js' %}"></script>
+{% endblock js %}

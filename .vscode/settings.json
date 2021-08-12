@@ -1,0 +1,94 @@
+{
+    "git.ignoreLimitWarning": true,
+    "python.pythonPath": "env\\Scripts\\python.exe",
+    "python.sortImports.args": [
+        "--profile=black",
+    ],
+    "python.formatting.provider": "black",
+    "python.formatting.blackArgs": [
+        "--lin-length=119"
+    ],
+    "[python]": {
+        "editor.codeActionsOnSave": {
+            "source.organizeImports": true
+        }
+    },
+    "commentAnchors.tags.list": [
+        {
+            "tag": "ANCHOR",
+            "iconColor": "#A8C023",
+            "highlightColor": "#212b30",
+            "backgroundColor": "#ABC023",
+            "scope": "file",
+            "styleComment": true
+        },
+        {
+            "tag": "TODO",
+            "iconColor": "#3ea8ff",
+            "highlightColor": "#212b30",
+            "backgroundColor": "#3ea8ff",
+            "scope": "workspace",
+            "styleComment": true
+        },
+        {
+            "tag": "FIXME",
+            "iconColor": "#F44336",
+            "highlightColor": "#212b30",
+            "backgroundColor": "#F44336",
+            "scope": "workspace",
+            "styleComment": true
+        },
+        {
+            "tag": "STUB",
+            "iconColor": "purple",
+            "highlightColor": "#212b30",
+            "backgroundColor": "#BA68C8",
+            "scope": "file",
+            "styleComment": true
+        },
+        {
+            "tag": "NOTE",
+            "iconColor": "#ff8800",
+            "highlightColor": "#212b30",
+            "scope": "workspace",
+            "backgroundColor": "#ff8800",
+            "styleComment": true
+        },
+        {
+            "tag": "REVIEW",
+            "iconColor": "#64DD17",
+            "highlightColor": "#212b30",
+            "backgroundColor": "#64DD17",
+            "scope": "workspace",
+            "styleComment": true
+        },
+        {
+            "tag": "SECTION",
+            "iconColor": "#00ff40",
+            "highlightColor": "#212b30",
+            "scope": "workspace",
+            "behavior": "region",
+            "backgroundColor": "#00ff40",
+            "styleComment": true
+        },
+        {
+            "tag": "SCRIPT",
+            "iconColor": "#00a2ff",
+            "highlightColor": "#212b30",
+            "scope": "workspace",
+            "behavior": "region",
+            "backgroundColor": "#00a2ff",
+            "styleComment": true
+        },
+        {
+            "tag": "LINK",
+            "iconColor": "#2ecc71",
+            "highlightColor": "#212b30",
+            "backgroundColor": "#2ecc71",
+            "scope": "workspace",
+            "behavior": "link",
+            "styleComment": true
+        },
+        
+    ],
+}

@@ -1,5 +1,5 @@
-from core.models import Event
 from django.shortcuts import redirect, render
+from event_app.models import Event
 
 from .forms import EventForm
 

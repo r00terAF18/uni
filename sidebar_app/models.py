@@ -1,10 +1,4 @@
-from django.db.models import (
-    BooleanField,
-    CharField,
-    ForeignKey,
-    Model,
-    SlugField,
-)
+from django.db.models import BooleanField, CharField, ForeignKey, Model, SlugField
 from django.db.models.deletion import CASCADE
 from django.db.models.fields import URLField
 from django.utils.translation import gettext_lazy as _
@@ -16,6 +10,7 @@ class Sidebar(Model):
         ("Daneshkadeh", "دانشکده"),
         ("Ostad", "استاد"),
         ("Lecture", "آموزش"),
+        ("Conference", "همایش"),
         ("News", "اخبار"),
     )
 

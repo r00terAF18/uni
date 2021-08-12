@@ -1,5 +1,5 @@
-from core.models import Lecture
 from django.shortcuts import redirect, render
+from lecture_app.models import Lecture
 
 from .forms import LectureForm
 
