@@ -19,7 +19,12 @@ class Info(Model):
     written_by = ForeignKey(
         User, on_delete=DO_NOTHING, blank=True, null=True, editable=False
     )
-    target_dep = ForeignKey(Departmant, related_name="target_dep", verbose_name=_("دانشکده"), on_delete=DO_NOTHING)
+    target_dep = ForeignKey(
+        Departmant,
+        related_name="target_dep",
+        verbose_name=_("دانشکده"),
+        on_delete=DO_NOTHING,
+    )
     date_created = jDateTimeField(_("تاریِخ"), auto_now_add=True)
     post_image = ImageField(
         _("عکس"), default="", upload_to="post_images/", blank=True, null=True
@@ -45,5 +50,3 @@ class Info(Model):
         date = str(self.date_created).split(" ")[0]
         time = str(self.date_created).split(" ")[1].split(".")[0]
         return f"{date} - {time}"
-
-

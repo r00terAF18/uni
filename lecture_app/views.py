@@ -6,9 +6,7 @@ from .models import Lecture
 
 def lecture_all(request):
     lectures = Lecture.objects.all().filter(draft=True)
-    return render(
-        request, "lecture-all.html", {"lectures": lectures}
-    )
+    return render(request, "lecture-all.html", {"lectures": lectures})
 
 
 def lecture_detail(request, id):

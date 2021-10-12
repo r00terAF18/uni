@@ -66,7 +66,3 @@ class DepLab(DepartmentAbstract):
     class Meta:
         verbose_name = _("دانشکده آزمایشگاه")
         verbose_name_plural = _("دانشکده آزمایشگاه ها")
-
-
-
-

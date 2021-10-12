@@ -13,26 +13,71 @@ class Migration(migrations.Migration):
 
     dependencies = [
         migrations.swappable_dependency(settings.AUTH_USER_MODEL),
-        ('faculty_app', '0001_initial'),
+        ("faculty_app", "0001_initial"),
     ]
 
     operations = [
         migrations.CreateModel(
-            name='Conference',
+            name="Conference",
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('title', models.CharField(max_length=50, verbose_name='موضوع')),
-                ('date_created', django_jalali.db.models.jDateTimeField(auto_now_add=True, verbose_name='تاریِخ')),
-                ('post_image', models.ImageField(blank=True, default='', null=True, upload_to='post_images/', verbose_name='عکس')),
-                ('content', ckeditor.fields.RichTextField(verbose_name='متن')),
-                ('draft', models.BooleanField(default=True, help_text='اگر تیک شود قابل مشاهده برای همهخواهد بود', verbose_name='پخش شود؟')),
-                ('target_dep', models.ForeignKey(on_delete=django.db.models.deletion.DO_NOTHING, to='faculty_app.departmant', verbose_name='دانشکده')),
-                ('written_by', models.ForeignKey(blank=True, editable=False, null=True, on_delete=django.db.models.deletion.DO_NOTHING, to=settings.AUTH_USER_MODEL)),
+                (
+                    "id",
+                    models.AutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("title", models.CharField(max_length=50, verbose_name="موضوع")),
+                (
+                    "date_created",
+                    django_jalali.db.models.jDateTimeField(
+                        auto_now_add=True, verbose_name="تاریِخ"
+                    ),
+                ),
+                (
+                    "post_image",
+                    models.ImageField(
+                        blank=True,
+                        default="",
+                        null=True,
+                        upload_to="post_images/",
+                        verbose_name="عکس",
+                    ),
+                ),
+                ("content", ckeditor.fields.RichTextField(verbose_name="متن")),
+                (
+                    "draft",
+                    models.BooleanField(
+                        default=True,
+                        help_text="اگر تیک شود قابل مشاهده برای همهخواهد بود",
+                        verbose_name="پخش شود؟",
+                    ),
+                ),
+                (
+                    "target_dep",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.DO_NOTHING,
+                        to="faculty_app.departmant",
+                        verbose_name="دانشکده",
+                    ),
+                ),
+                (
+                    "written_by",
+                    models.ForeignKey(
+                        blank=True,
+                        editable=False,
+                        null=True,
+                        on_delete=django.db.models.deletion.DO_NOTHING,
+                        to=settings.AUTH_USER_MODEL,
+                    ),
+                ),
             ],
             options={
-                'verbose_name': 'همایش',
-                'verbose_name_plural': 'همایش ها',
-                'ordering': ('-date_created',),
+                "verbose_name": "همایش",
+                "verbose_name_plural": "همایش ها",
+                "ordering": ("-date_created",),
             },
         ),
     ]

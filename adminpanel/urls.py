@@ -1,15 +1,15 @@
 from django.urls import path
 
-from .views import *
+# from .views import *
 
-from .views_college import *
-from .views_header import *
-from .views_lecture import *
-from .views_professor import *
-from .views_sidebar import *
-from .views_uni_system import *
-from .views_news import *
-from .views_event import *
+# from .views_college import *
+# from .views_header import *
+# from .views_lecture import *
+# from .views_professor import *
+# from .views_sidebar import *
+# from .views_uni_system import *
+# from .views_news import *
+# from .views_event import *
 
 urlpatterns = [
     # path("", index_admin, name="index-admin"),
@@ -88,5 +88,4 @@ urlpatterns = [
     #     name="uni-system-delete",
     # ),
     # path("University-System/edit/<int:id>/", uni_system_edit, name="uni-system-edit"),
-
 ]

@@ -29,7 +29,6 @@ class Professor(Model):
         verbose_name = "استاد"
         verbose_name_plural = "اساتید"
 
-
     def __str__(self):
         return f"{self.f_name}"
 
@@ -45,7 +44,7 @@ class ProfessorPost(Model):
 
     def __str__(self) -> str:
         return str(self.title)
-    
+
     def get_time(self):
         # This du dad saves it with miliseconds, and so we first remove date, then milisecond
         date = str(self.date_created).split(" ")[0]

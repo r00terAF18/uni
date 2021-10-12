@@ -14,6 +14,7 @@ from faculty_app.models import Departmant
 
 # DEFINE MODELS
 
+
 class Lecture(Model):
     written_by = ForeignKey(
         User, on_delete=DO_NOTHING, blank=True, null=True, editable=False

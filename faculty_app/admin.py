@@ -20,5 +20,3 @@ class DepLabsInline(TabularInline):
 class DeprtmentAdminModel(ModelAdmin):
     inlines = [DepFormsInline, DepLabsInline]
     list_display = ["name", "head"]
-
-

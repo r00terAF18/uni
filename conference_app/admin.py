@@ -17,6 +17,7 @@ def this_draft(modeladmin, request, queryset):
 
 this_draft.short_description = "غیر فعال سازی انتخواب شده"
 
+
 @admin.register(Conference)
 class ConferenceAdmin(admin.ModelAdmin):
     actions = [this_publish, this_draft]
@@ -26,5 +27,3 @@ class ConferenceAdmin(admin.ModelAdmin):
     def save_model(self, request, obj, form, change) -> None:
         obj.written_by = request.user
         return super().save_model(request, obj, form, change)
-
-

@@ -8,23 +8,38 @@ class Migration(migrations.Migration):
 
     initial = True
 
-    dependencies = [
-    ]
+    dependencies = []
 
     operations = [
         migrations.CreateModel(
-            name='Event',
+            name="Event",
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('event_date', django_jalali.db.models.jDateField(verbose_name='تاریخ رویداد')),
-                ('time_left', django_jalali.db.models.jDateField(auto_now_add=True, verbose_name='روز باقی مانده(تغییر ندهید)')),
-                ('title', models.CharField(max_length=100, verbose_name='موضوع')),
-                ('draft', models.BooleanField(default=True, verbose_name='پخش شود؟')),
+                (
+                    "id",
+                    models.AutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                (
+                    "event_date",
+                    django_jalali.db.models.jDateField(verbose_name="تاریخ رویداد"),
+                ),
+                (
+                    "time_left",
+                    django_jalali.db.models.jDateField(
+                        auto_now_add=True, verbose_name="روز باقی مانده(تغییر ندهید)"
+                    ),
+                ),
+                ("title", models.CharField(max_length=100, verbose_name="موضوع")),
+                ("draft", models.BooleanField(default=True, verbose_name="پخش شود؟")),
             ],
             options={
-                'verbose_name': 'رویداد',
-                'verbose_name_plural': 'رویداد ها',
-                'ordering': ('-event_date',),
+                "verbose_name": "رویداد",
+                "verbose_name_plural": "رویداد ها",
+                "ordering": ("-event_date",),
             },
         ),
     ]

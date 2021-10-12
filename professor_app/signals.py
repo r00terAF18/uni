@@ -16,9 +16,8 @@ def check_data(sender, instance, **kwargs):
         last_name=instance.l_name,
         email=instance.email,
         is_staff=True,
-        is_superuser=True
+        is_superuser=True,
     )
     new_u.set_password(instance.password)
     new_u.save()
     instance.p_user = new_u
-    

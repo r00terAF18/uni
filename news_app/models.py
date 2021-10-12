@@ -45,5 +45,3 @@ class NewsPost(Model):
         date = str(self.date_created).split(" ")[0]
         time = str(self.date_created).split(" ")[1].split(".")[0]
         return f"{date} - {time}"
-
-

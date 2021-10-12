@@ -75,7 +75,10 @@ ROOT_URLCONF = "shuut_uni.urls"
 TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
-        "DIRS": [BASE_DIR / "adminpanel" / "templates", BASE_DIR / "news_app" / "templates"],
+        "DIRS": [
+            BASE_DIR / "adminpanel" / "templates",
+            BASE_DIR / "news_app" / "templates",
+        ],
         "APP_DIRS": True,
         "OPTIONS": {
             "context_processors": [
@@ -113,12 +116,6 @@ DATABASES = {
     }
 }
 
-CACHES = {
-    "default": {
-        "BACKEND": "django.core.cache.backends.filebased.FileBasedCache",
-        "LOCATION": ["/var/tmp/django_cache", "c:/Users/ahroo"],
-    }
-}
 
 AUTH_PASSWORD_VALIDATORS = [
     # {
@@ -205,3 +202,4 @@ BATON = {
     "MENU_TITLE": "Main Menu",
     "GRAVATAR_DEFAULT_IMG": "retro",
 }
+DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'

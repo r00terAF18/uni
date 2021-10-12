@@ -16,9 +16,7 @@ class PPostInline(StackedInline):
     show_change_link = True
 
 
-
 @admin.register(Professor)
 class PAdmin(ModelAdmin):
     inlines = [PUploadInline, PPostInline]
     # pass
-

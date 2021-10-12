@@ -9,47 +9,112 @@ class Migration(migrations.Migration):
 
     initial = True
 
-    dependencies = [
-    ]
+    dependencies = []
 
     operations = [
         migrations.CreateModel(
-            name='Menu',
+            name="Menu",
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('title', models.CharField(help_text='تایتل صفحه', max_length=255, verbose_name='تایتل')),
-                ('image', models.ImageField(blank=True, upload_to='page_uploads/', verbose_name='عکس')),
-                ('content', ckeditor.fields.RichTextField(verbose_name='متن')),
-                ('menu_title', models.CharField(help_text='Name of the Menu', max_length=100, verbose_name='تایتل منو')),
+                (
+                    "id",
+                    models.AutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                (
+                    "title",
+                    models.CharField(
+                        help_text="تایتل صفحه", max_length=255, verbose_name="تایتل"
+                    ),
+                ),
+                (
+                    "image",
+                    models.ImageField(
+                        blank=True, upload_to="page_uploads/", verbose_name="عکس"
+                    ),
+                ),
+                ("content", ckeditor.fields.RichTextField(verbose_name="متن")),
+                (
+                    "menu_title",
+                    models.CharField(
+                        help_text="Name of the Menu",
+                        max_length=100,
+                        verbose_name="تایتل منو",
+                    ),
+                ),
             ],
             options={
-                'verbose_name': 'تک لینک',
-                'verbose_name_plural': 'تک لینک ها',
+                "verbose_name": "تک لینک",
+                "verbose_name_plural": "تک لینک ها",
             },
         ),
         migrations.CreateModel(
-            name='SubMenu',
+            name="SubMenu",
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('sub_menu', models.CharField(help_text='تایتل منو', max_length=100, verbose_name='تایتل زیر مجموعه')),
+                (
+                    "id",
+                    models.AutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                (
+                    "sub_menu",
+                    models.CharField(
+                        help_text="تایتل منو",
+                        max_length=100,
+                        verbose_name="تایتل زیر مجموعه",
+                    ),
+                ),
             ],
             options={
-                'verbose_name': 'چند منویی',
-                'verbose_name_plural': 'چند منویی ها',
+                "verbose_name": "چند منویی",
+                "verbose_name_plural": "چند منویی ها",
             },
         ),
         migrations.CreateModel(
-            name='SubMenuPage',
+            name="SubMenuPage",
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('title', models.CharField(help_text='تایتل صفحه', max_length=255, verbose_name='تایتل')),
-                ('image', models.ImageField(blank=True, upload_to='page_uploads/', verbose_name='عکس')),
-                ('content', ckeditor.fields.RichTextField(verbose_name='متن')),
-                ('sub_menu', models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.CASCADE, to='pages_app.submenu')),
+                (
+                    "id",
+                    models.AutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                (
+                    "title",
+                    models.CharField(
+                        help_text="تایتل صفحه", max_length=255, verbose_name="تایتل"
+                    ),
+                ),
+                (
+                    "image",
+                    models.ImageField(
+                        blank=True, upload_to="page_uploads/", verbose_name="عکس"
+                    ),
+                ),
+                ("content", ckeditor.fields.RichTextField(verbose_name="متن")),
+                (
+                    "sub_menu",
+                    models.ForeignKey(
+                        blank=True,
+                        null=True,
+                        on_delete=django.db.models.deletion.CASCADE,
+                        to="pages_app.submenu",
+                    ),
+                ),
             ],
             options={
-                'verbose_name': 'صفحه',
-                'verbose_name_plural': 'صفحه هات',
+                "verbose_name": "صفحه",
+                "verbose_name_plural": "صفحه هات",
             },
         ),
     ]

@@ -44,4 +44,3 @@ class InfoAdmin(admin.ModelAdmin):
     def save_model(self, request, obj, form, change) -> None:
         obj.written_by = request.user
         return super().save_model(request, obj, form, change)
-

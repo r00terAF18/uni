@@ -47,7 +47,5 @@ class NewsPostAdmin(admin.ModelAdmin):
         return super().save_model(request, obj, form, change)
 
 
-
-
 # strange thing to do, but
 admin.site.unregister(Site)

@@ -8,30 +8,79 @@ class Migration(migrations.Migration):
 
     initial = True
 
-    dependencies = [
-    ]
+    dependencies = []
 
     operations = [
         migrations.CreateModel(
-            name='Sidebar',
+            name="Sidebar",
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('sidebar_title', models.CharField(max_length=255, verbose_name='تایتل')),
-                ('sidebar_on_page', models.CharField(choices=[('Daneshkadeh', 'دانشکده'), ('Ostad', 'استاد'), ('Lecture', 'آموزش'), ('Conference', 'همایش'), ('News', 'اخبار')], help_text='صفحه ای که سایدبار نشان داده شود', max_length=15, verbose_name='صفحه')),
-                ('sidebar_is_active', models.BooleanField(default=True, verbose_name='سایدبار فعال باشد؟')),
+                (
+                    "id",
+                    models.AutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                (
+                    "sidebar_title",
+                    models.CharField(max_length=255, verbose_name="تایتل"),
+                ),
+                (
+                    "sidebar_on_page",
+                    models.CharField(
+                        choices=[
+                            ("Daneshkadeh", "دانشکده"),
+                            ("Ostad", "استاد"),
+                            ("Lecture", "آموزش"),
+                            ("Conference", "همایش"),
+                            ("News", "اخبار"),
+                        ],
+                        help_text="صفحه ای که سایدبار نشان داده شود",
+                        max_length=15,
+                        verbose_name="صفحه",
+                    ),
+                ),
+                (
+                    "sidebar_is_active",
+                    models.BooleanField(
+                        default=True, verbose_name="سایدبار فعال باشد؟"
+                    ),
+                ),
             ],
             options={
-                'verbose_name': 'سایدبار',
-                'verbose_name_plural': 'سایدبار ها',
+                "verbose_name": "سایدبار",
+                "verbose_name_plural": "سایدبار ها",
             },
         ),
         migrations.CreateModel(
-            name='SidebarItem',
+            name="SidebarItem",
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('sidebar_item_title', models.CharField(max_length=255, verbose_name='تایتل')),
-                ('sidebar_link', models.SlugField(allow_unicode=True, verbose_name='لینک')),
-                ('sidebar', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='sidebar_app.sidebar')),
+                (
+                    "id",
+                    models.AutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                (
+                    "sidebar_item_title",
+                    models.CharField(max_length=255, verbose_name="تایتل"),
+                ),
+                (
+                    "sidebar_link",
+                    models.SlugField(allow_unicode=True, verbose_name="لینک"),
+                ),
+                (
+                    "sidebar",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        to="sidebar_app.sidebar",
+                    ),
+                ),
             ],
         ),
     ]

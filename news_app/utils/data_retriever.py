@@ -37,7 +37,6 @@ def first_of_n(n: int, filter_item: object) -> list:
     return first_n
 
 
-
 def retrieve_carousel() -> list:
     """
     returns all the carousel items belonging to the first active active carousel
@@ -52,4 +51,3 @@ def retrieve_carousel() -> list:
         carousel_items.append(ci)
 
     return carousel_items
-

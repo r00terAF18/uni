@@ -17,60 +17,201 @@ class Migration(migrations.Migration):
 
     operations = [
         migrations.CreateModel(
-            name='Professor',
+            name="Professor",
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('f_name', models.CharField(max_length=255, verbose_name='نام')),
-                ('l_name', models.CharField(max_length=255, verbose_name='نام خانوادگی')),
-                ('email', models.EmailField(max_length=255, verbose_name='ایمیل')),
-                ('password', models.CharField(max_length=255, unique=True, verbose_name='پسورد')),
-                ('image', models.ImageField(blank=True, default='', upload_to='staff/', verbose_name='عکس')),
-                ('level_of_education', models.CharField(max_length=50, verbose_name='مرتبه علمی')),
-                ('phone_number', models.CharField(blank=True, max_length=15, verbose_name='شماره داخلی')),
-                ('p_user', models.OneToOneField(blank=True, editable=False, on_delete=django.db.models.deletion.CASCADE, to=settings.AUTH_USER_MODEL)),
+                (
+                    "id",
+                    models.AutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("f_name", models.CharField(max_length=255, verbose_name="نام")),
+                (
+                    "l_name",
+                    models.CharField(max_length=255, verbose_name="نام خانوادگی"),
+                ),
+                ("email", models.EmailField(max_length=255, verbose_name="ایمیل")),
+                (
+                    "password",
+                    models.CharField(max_length=255, unique=True, verbose_name="پسورد"),
+                ),
+                (
+                    "image",
+                    models.ImageField(
+                        blank=True, default="", upload_to="staff/", verbose_name="عکس"
+                    ),
+                ),
+                (
+                    "level_of_education",
+                    models.CharField(max_length=50, verbose_name="مرتبه علمی"),
+                ),
+                (
+                    "phone_number",
+                    models.CharField(
+                        blank=True, max_length=15, verbose_name="شماره داخلی"
+                    ),
+                ),
+                (
+                    "p_user",
+                    models.OneToOneField(
+                        blank=True,
+                        editable=False,
+                        on_delete=django.db.models.deletion.CASCADE,
+                        to=settings.AUTH_USER_MODEL,
+                    ),
+                ),
             ],
             options={
-                'verbose_name': 'استاد',
-                'verbose_name_plural': 'اساتید',
+                "verbose_name": "استاد",
+                "verbose_name_plural": "اساتید",
             },
         ),
         migrations.CreateModel(
-            name='ProfessorUpload',
+            name="ProfessorUpload",
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('p_about', ckeditor.fields.RichTextField(blank=True, verbose_name='توضیحات')),
-                ('p_education', ckeditor.fields.RichTextField(blank=True, verbose_name='سوابق تحصیلی')),
-                ('p_liking', ckeditor.fields.RichTextField(blank=True, verbose_name='زمینه های تحقیقاتی مورد علاقه')),
-                ('p_papers_isi', ckeditor.fields.RichTextField(blank=True, verbose_name='مقالات چاپ شده در نشریات معتبر علمی- پژوهشی بین المللی و ISI')),
-                ('p_papers', ckeditor.fields.RichTextField(blank=True, verbose_name='مقالات چاپ شده در نشریات معتبر داخلی')),
-                ('p_convention_isi', ckeditor.fields.RichTextField(blank=True, verbose_name='همایش های بین المللی')),
-                ('p_convention', ckeditor.fields.RichTextField(blank=True, verbose_name='همایش های ملی و منطقه ای')),
-                ('p_translation', ckeditor.fields.RichTextField(blank=True, verbose_name='تالیف و ترجمه کتاب')),
-                ('p_projects_pending', ckeditor.fields.RichTextField(blank=True, verbose_name='طرح های تحقیقاتی در دست اجرا')),
-                ('p_projects_complete', ckeditor.fields.RichTextField(blank=True, verbose_name='طرح های تحقیقاتی خاتمه یافته')),
-                ('p_education_project', ckeditor.fields.RichTextField(blank=True, verbose_name='راهنمایی و مشاوره پروژه های کارشناسی، پایان نامه های کارشناسی ارشد و رساله های دکتری')),
-                ('p_projects', ckeditor.fields.RichTextField(blank=True, verbose_name='فعالیتهای اجرایی')),
-                ('p_prizes', ckeditor.fields.RichTextField(blank=True, verbose_name='جوایز و افتخارات')),
-                ('p_professor', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='professor_app.professor')),
+                (
+                    "id",
+                    models.AutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                (
+                    "p_about",
+                    ckeditor.fields.RichTextField(blank=True, verbose_name="توضیحات"),
+                ),
+                (
+                    "p_education",
+                    ckeditor.fields.RichTextField(
+                        blank=True, verbose_name="سوابق تحصیلی"
+                    ),
+                ),
+                (
+                    "p_liking",
+                    ckeditor.fields.RichTextField(
+                        blank=True, verbose_name="زمینه های تحقیقاتی مورد علاقه"
+                    ),
+                ),
+                (
+                    "p_papers_isi",
+                    ckeditor.fields.RichTextField(
+                        blank=True,
+                        verbose_name="مقالات چاپ شده در نشریات معتبر علمی- پژوهشی بین المللی و ISI",
+                    ),
+                ),
+                (
+                    "p_papers",
+                    ckeditor.fields.RichTextField(
+                        blank=True, verbose_name="مقالات چاپ شده در نشریات معتبر داخلی"
+                    ),
+                ),
+                (
+                    "p_convention_isi",
+                    ckeditor.fields.RichTextField(
+                        blank=True, verbose_name="همایش های بین المللی"
+                    ),
+                ),
+                (
+                    "p_convention",
+                    ckeditor.fields.RichTextField(
+                        blank=True, verbose_name="همایش های ملی و منطقه ای"
+                    ),
+                ),
+                (
+                    "p_translation",
+                    ckeditor.fields.RichTextField(
+                        blank=True, verbose_name="تالیف و ترجمه کتاب"
+                    ),
+                ),
+                (
+                    "p_projects_pending",
+                    ckeditor.fields.RichTextField(
+                        blank=True, verbose_name="طرح های تحقیقاتی در دست اجرا"
+                    ),
+                ),
+                (
+                    "p_projects_complete",
+                    ckeditor.fields.RichTextField(
+                        blank=True, verbose_name="طرح های تحقیقاتی خاتمه یافته"
+                    ),
+                ),
+                (
+                    "p_education_project",
+                    ckeditor.fields.RichTextField(
+                        blank=True,
+                        verbose_name="راهنمایی و مشاوره پروژه های کارشناسی، پایان نامه های کارشناسی ارشد و رساله های دکتری",
+                    ),
+                ),
+                (
+                    "p_projects",
+                    ckeditor.fields.RichTextField(
+                        blank=True, verbose_name="فعالیتهای اجرایی"
+                    ),
+                ),
+                (
+                    "p_prizes",
+                    ckeditor.fields.RichTextField(
+                        blank=True, verbose_name="جوایز و افتخارات"
+                    ),
+                ),
+                (
+                    "p_professor",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        to="professor_app.professor",
+                    ),
+                ),
             ],
             options={
-                'verbose_name': 'درباره استاد',
-                'verbose_name_plural': 'درباره اساتید',
+                "verbose_name": "درباره استاد",
+                "verbose_name_plural": "درباره اساتید",
             },
         ),
         migrations.CreateModel(
-            name='ProfessorPost',
+            name="ProfessorPost",
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('title', models.CharField(max_length=255, verbose_name='تایتل پست')),
-                ('image', models.ImageField(blank=True, null=True, upload_to='professor_post/', verbose_name='عکس')),
-                ('content', ckeditor.fields.RichTextField(verbose_name='متن')),
-                ('date_created', django_jalali.db.models.jDateTimeField(auto_now_add=True, verbose_name='تاریِخ')),
-                ('professor', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='professor_app.professor')),
+                (
+                    "id",
+                    models.AutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("title", models.CharField(max_length=255, verbose_name="تایتل پست")),
+                (
+                    "image",
+                    models.ImageField(
+                        blank=True,
+                        null=True,
+                        upload_to="professor_post/",
+                        verbose_name="عکس",
+                    ),
+                ),
+                ("content", ckeditor.fields.RichTextField(verbose_name="متن")),
+                (
+                    "date_created",
+                    django_jalali.db.models.jDateTimeField(
+                        auto_now_add=True, verbose_name="تاریِخ"
+                    ),
+                ),
+                (
+                    "professor",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        to="professor_app.professor",
+                    ),
+                ),
             ],
             options={
-                'verbose_name': 'پست استاد',
-                'verbose_name_plural': 'پست اساتید',
+                "verbose_name": "پست استاد",
+                "verbose_name_plural": "پست اساتید",
             },
         ),
     ]

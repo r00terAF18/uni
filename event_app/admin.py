@@ -23,5 +23,3 @@ class EventAdminModel(admin.ModelAdmin):
     actions = [this_publish, this_draft]
     list_display = ["event_date", "title", "draft"]
     list_editable = ["draft"]
-
-

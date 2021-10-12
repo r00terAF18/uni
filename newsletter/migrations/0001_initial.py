@@ -8,31 +8,55 @@ class Migration(migrations.Migration):
 
     initial = True
 
-    dependencies = [
-    ]
+    dependencies = []
 
     operations = [
         migrations.CreateModel(
-            name='NewsletterMessage',
+            name="NewsletterMessage",
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('message_title', models.CharField(max_length=255, verbose_name='موضوع')),
-                ('message_form', ckeditor.fields.RichTextField(verbose_name='متن ایمیل')),
+                (
+                    "id",
+                    models.AutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                (
+                    "message_title",
+                    models.CharField(max_length=255, verbose_name="موضوع"),
+                ),
+                (
+                    "message_form",
+                    ckeditor.fields.RichTextField(verbose_name="متن ایمیل"),
+                ),
             ],
             options={
-                'verbose_name': 'ایمیل',
-                'verbose_name_plural': 'ایمیل ها',
+                "verbose_name": "ایمیل",
+                "verbose_name_plural": "ایمیل ها",
             },
         ),
         migrations.CreateModel(
-            name='Subscriber',
+            name="Subscriber",
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('email', models.EmailField(max_length=254, verbose_name='ثبت نام کننده')),
+                (
+                    "id",
+                    models.AutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                (
+                    "email",
+                    models.EmailField(max_length=254, verbose_name="ثبت نام کننده"),
+                ),
             ],
             options={
-                'verbose_name': 'ثبت نامی',
-                'verbose_name_plural': 'ثبت نامی ها',
+                "verbose_name": "ثبت نامی",
+                "verbose_name_plural": "ثبت نامی ها",
             },
         ),
     ]

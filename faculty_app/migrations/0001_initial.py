@@ -10,49 +10,118 @@ class Migration(migrations.Migration):
     initial = True
 
     dependencies = [
-        ('professor_app', '0001_initial'),
+        ("professor_app", "0001_initial"),
     ]
 
     operations = [
         migrations.CreateModel(
-            name='Departmant',
+            name="Departmant",
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('name', models.CharField(max_length=50, verbose_name='نام دانشکده')),
-                ('image', models.ImageField(blank=True, default='', null=True, upload_to='departmant/', verbose_name='عکس')),
-                ('info', ckeditor.fields.RichTextField(verbose_name='پیام رئیس دانشکده')),
-                ('head', models.ForeignKey(blank=True, on_delete=django.db.models.deletion.DO_NOTHING, related_name='head', to='professor_app.professor', verbose_name='رئیس دانشکده')),
-                ('ostads', models.ManyToManyField(related_name='ostads', to='professor_app.Professor', verbose_name='اساتید')),
+                (
+                    "id",
+                    models.AutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("name", models.CharField(max_length=50, verbose_name="نام دانشکده")),
+                (
+                    "image",
+                    models.ImageField(
+                        blank=True,
+                        default="",
+                        null=True,
+                        upload_to="departmant/",
+                        verbose_name="عکس",
+                    ),
+                ),
+                (
+                    "info",
+                    ckeditor.fields.RichTextField(verbose_name="پیام رئیس دانشکده"),
+                ),
+                (
+                    "head",
+                    models.ForeignKey(
+                        blank=True,
+                        on_delete=django.db.models.deletion.DO_NOTHING,
+                        related_name="head",
+                        to="professor_app.professor",
+                        verbose_name="رئیس دانشکده",
+                    ),
+                ),
+                (
+                    "ostads",
+                    models.ManyToManyField(
+                        related_name="ostads",
+                        to="professor_app.Professor",
+                        verbose_name="اساتید",
+                    ),
+                ),
             ],
             options={
-                'verbose_name': 'دانشکده',
-                'verbose_name_plural': 'دانشکده ها',
+                "verbose_name": "دانشکده",
+                "verbose_name_plural": "دانشکده ها",
             },
         ),
         migrations.CreateModel(
-            name='DepLab',
+            name="DepLab",
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('name', models.CharField(max_length=255, verbose_name='نام')),
-                ('lab_link', models.CharField(max_length=255, verbose_name='لینک')),
-                ('dep', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='faculty_app.departmant')),
+                (
+                    "id",
+                    models.AutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("name", models.CharField(max_length=255, verbose_name="نام")),
+                ("lab_link", models.CharField(max_length=255, verbose_name="لینک")),
+                (
+                    "dep",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        to="faculty_app.departmant",
+                    ),
+                ),
             ],
             options={
-                'verbose_name': 'دانشکده آزمایشگاه',
-                'verbose_name_plural': 'دانشکده آزمایشگاه ها',
+                "verbose_name": "دانشکده آزمایشگاه",
+                "verbose_name_plural": "دانشکده آزمایشگاه ها",
             },
         ),
         migrations.CreateModel(
-            name='DepForms',
+            name="DepForms",
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('name', models.CharField(max_length=255, verbose_name='نام')),
-                ('form_file', models.FileField(upload_to='department/forms/', verbose_name='فورم')),
-                ('dep', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='faculty_app.departmant')),
+                (
+                    "id",
+                    models.AutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("name", models.CharField(max_length=255, verbose_name="نام")),
+                (
+                    "form_file",
+                    models.FileField(
+                        upload_to="department/forms/", verbose_name="فورم"
+                    ),
+                ),
+                (
+                    "dep",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        to="faculty_app.departmant",
+                    ),
+                ),
             ],
             options={
-                'verbose_name': 'فایل دانشکده',
-                'verbose_name_plural': 'فایل های دانشکذه',
+                "verbose_name": "فایل دانشکده",
+                "verbose_name_plural": "فایل های دانشکذه",
             },
         ),
     ]

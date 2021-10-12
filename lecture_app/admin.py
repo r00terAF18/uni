@@ -17,6 +17,7 @@ def this_draft(modeladmin, request, queryset):
 
 this_draft.short_description = "غیر فعال سازی انتخواب شده"
 
+
 @admin.register(Lecture)
 class LectureAdmin(admin.ModelAdmin):
     actions = [this_publish, this_draft]

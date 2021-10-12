@@ -41,9 +41,9 @@ def all_pp(request):
     pp = ProfessorPost.objects.all()
     return render(request, "all_professor_posts.html", {"posts": pp})
 
+
 def professor_post(request, title):
     p = ProfessorPost.objects.get(title=title)
     # prof = Professor.objects.get(id=p.professor.id)
     dep = Departmant.objects.get(head=p.professor.id)
     return render(request, "Ostad-Post.html", {"post": p, "dep": dep})
-
